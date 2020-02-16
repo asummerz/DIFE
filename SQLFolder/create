@@ -1,3 +1,4 @@
+
 -- create
 
 
@@ -18,8 +19,9 @@ CREATE TABLE member (
 	first_time 	date 		NOT NULL,
 	last 	varchar2(20) 		NOT NULL,
 	last_time 	date 		NOT NULL,
-    mem_point number default 0
-);						
+   	mem_point number default 0
+);
+
 CREATE TABLE pilot (				
 	pil_no 	varchar2(20) 	primary key,	
 	mem_no 	varchar2(20) 		NOT NULL,
@@ -36,7 +38,8 @@ CREATE TABLE pilot (
 	last_time 	date 		NOT NULL
 );				
 				
-            ALTER TABLE pilot ADD  ( FOREIGN KEY (mem_no) REFERENCES member ) ;
+ALTER TABLE pilot ADD  ( FOREIGN KEY (mem_no) REFERENCES member ) ;
+	    
 CREATE TABLE drone (				
 	dro_no	varchar2(20)	primary key,	
 	dro_name	varchar2(50)		NOT NULL,
@@ -60,6 +63,7 @@ CREATE TABLE rental (
 	last	varchar2(20)		NOT NULL,
 	last_time	date		NOT NULL
 );	
+
 CREATE TABLE possesion (				
 	pos_no	varchar2(20)	primary key,	
 	pil_no	varchar2(20)		NULL,
@@ -71,7 +75,8 @@ CREATE TABLE possesion (
 	first_time	date		NOT NULL,
 	last	varchar2(20)		NOT NULL,
 	last_time	date		NOT NULL
-);			
+);
+
 ALTER TABLE possesion			
        ADD  ( FOREIGN KEY (pil_no)			
                              REFERENCES pilot ) ;			
@@ -82,8 +87,9 @@ ALTER TABLE possesion
 			
 ALTER TABLE possesion			
        ADD  ( FOREIGN KEY (ren_no)			
-                             REFERENCES rental ) ;	
-    CREATE TABLE basket (				
+                             REFERENCES rental ) ;
+			     
+CREATE TABLE basket (				
 	bas_no 	varchar2(20) 	primary key,	
 	pos_no 	varchar2(20) 		NOT NULL,
 	mem_no 	varchar2(20) 		NOT NULL,
@@ -92,15 +98,17 @@ ALTER TABLE possesion
 	bas_rental 	date 		NOT NULL,
 	bas_return 	date 		NOT NULL,
 	bas_time 	date 		NOT NULL
-);				
-                           ALTER TABLE basket			
+);	
+
+ALTER TABLE basket			
        ADD  ( FOREIGN KEY (mem_no)			
                              REFERENCES member ) ;			
 			
 ALTER TABLE basket			
        ADD  ( FOREIGN KEY (pos_no)			
-                             REFERENCES possesion ) ;			
-                             CREATE TABLE orders (				
+                             REFERENCES possesion ) ;	
+			     
+CREATE TABLE orders (				
 	ord_no 	varchar2(20) 	primary key,	
 	mem_no 	varchar2(20) 		NOT NULL,
 	ord_amount 	number 		NOT NULL,
@@ -110,14 +118,16 @@ ALTER TABLE basket
 	ord_date	date		NOT NULL,
 	ord_pay_state	number(1)		NOT NULL
 				
-);				
+);	
+
 ALTER TABLE basket			
        ADD  ( FOREIGN KEY (mem_no)			
                              REFERENCES member ) ;			
 			
 ALTER TABLE basket			
        ADD  ( FOREIGN KEY (pos_no)			
-                             REFERENCES possesion ) ;		
+                             REFERENCES possesion ) ;	
+			     
 CREATE TABLE orders (				
 	ord_no 	varchar2(20) 	primary key,	
 	mem_no 	varchar2(20) 		NOT NULL,
@@ -150,5 +160,5 @@ ALTER TABLE ordersDetail
 			
 ALTER TABLE ordersDetail			
        ADD  ( FOREIGN KEY (pos_no)			
-                             REFERENCES possesion ) ;
-                             
+                             REFERENCES possesion ) ;			
+     
