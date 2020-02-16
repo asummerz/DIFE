@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+
+  <!-- 게시판 모두보기 -->
+  <select id="selectAll" resultType="boardVo">
+      select mem_name, B.* 
+      from member m, 
+      (select mem_no, boa_no, boa_title, boa_contents, boa_pwd, boa_rating, to_char(boa_regdate, 'yyyy/MM/dd') regdate, 
+      boa_view, boa_answer, boa_sort, boa_category, boa_fname, boa_ref, boa_level, boa_step, first, first_time, last, last_time 
+      from board
+      <if test="boa_sort != null and boa_sort !=''">
+      	<if test="boa_sort == '문의게시판'">
+      		where boa_sort like '%문의%'
+      	</if>
+      	<if test="boa_sort == '후기게시판'">
+      		where boa_sort like '%후기%'
+      	</if>
+      </if>
+      ) B where m.mem_no = B.mem_no order by boa_no, boa_ref desc, boa_step
+  </select>
+  
+  <!-- 게시판 등록 -->
+
+  <insert id="insert">
+  	insert into board values(#{boa_no}, #{mem_no}, #{boa_title}, #{boa_contents}, #{boa_pwd}, #{boa_rating}, sysdate, 0, #{boa_answer}, #{boa_sort}, #{boa_sort}, #{boa_fname}, #{boa_ref}, #{boa_level}, #{boa_step}, #{mem_no}, sysdate, #{mem_no}, sysdate)
+  </insert>
+  
+  <!-- 답변유무 변경 -->
+  <update id="answerUpdate">
+  	update board set boa_answer='답변완료' where boa_no=#{boa_no}
+  </update>
+  
+  <!-- 글번호 -->
+  <select id="nextNo" resultType="java.lang.Integer">
+  	select nvl(max(boa_no),0)+1 from board
+  </select>
+  
+  <!-- 상세보기 -->
+  <select id="getBoard" resultType="boardVo">
+  	select mem_name, B.* from member m, (select mem_no, boa_no, boa_title, boa_contents, boa_pwd, boa_rating, to_char(boa_regdate, 'yyyy/MM/dd') regdate, 
+      boa_view, boa_answer, boa_sort, boa_category, boa_fname, boa_ref, boa_level, boa_step, first, first_time, last, last_time from board) B 
+      where m.mem_no = B.mem_no and boa_no=#{boa_no}
+  </select>
+  
+  <!-- 댓글 -->
+  <update id="updateStep">
+  	update board set boa_step = boa_step+1 where boa_ref=#{boa_ref} and boa_step > #{boa_step}
+  </update>
+  
+  <!-- 수정 -->
+  <update id="updateBoard">
+  	update board set boa_title=#{boa_title}, boa_contents=#{boa_contents}, boa_rating=#{boa_rating}, boa_fname=#{boa_fname} where boa_no=#{boa_no} and boa_pwd=#{boa_pwd}
+  </update>
+  
+  <!-- 삭제 -->
+  <delete id="deleteBoard">
+  	delete board where boa_no=#{boa_no}
+  </delete>
+  
+  <!-- 조회수증가 -->
+  <update id="updateBoa_view">
+  	update board set boa_view = boa_view+1 where boa_no=#{boa_no}
+  </update>
+
+</mapper>

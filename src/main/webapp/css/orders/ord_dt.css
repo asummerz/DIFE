@@ -1,0 +1,123 @@
+@charset "utf-8";
+
+@media (max-width: 375px) {
+    #category{
+        font-size: 14px;
+        line-height: 70px;
+        text-align: center;
+    }
+    
+    #category-3 > a > img{
+        width: 100px;
+        height: 30px;
+    }
+    #category-1{
+        font-size: 12px;
+        padding: 30px 0px;
+        float: left;
+    }
+
+    #category-1 > a{
+        padding:0px 6px;
+        color: white;
+    }
+
+    #category-1 > a:hover{
+        color: white;
+    }
+
+    #category-2{
+        float: right;
+        padding: 30px 0px;
+    }
+
+    #category-2 > a{
+        color: white;
+        padding: 3px;
+    }
+}
+
+@media (min-width:376px){
+   
+    /*콘텐츠-높이는 자유롭게 설정하세요*/
+    #contents{
+        height: auto;
+    }
+    
+    .container{
+        width: 1300px;
+        margin: 0 auto;
+        height: auto;
+    }
+
+    
+    /* 레이아웃 */
+	#content-top {
+	    height: 50px;
+	    line-height: 50px;
+	    background-color: #1F2124;
+	}
+	#content-session{
+	    height:auto;
+	    background-color: #1F2124;
+	}
+	#content_footer{
+	    height:150px;
+	}
+
+	/*컨텐츠 정보*/
+	.container .main-session .title{
+	    text-align: center;
+	}
+	.container .top_info{
+	    margin-bottom: 15px;
+	    border: 1px solid #222121;
+	
+	}
+	/*컨텐츠 하단*/
+	.container .content_footer{
+	    
+	}
+	/*테이블*/
+	.cart_table{
+	    border-collapse: separate;
+	    border-spacing: 1px;
+	    line-height: 1.5;
+	    border-top: 1px solid #ccc;
+	    margin : 20px 10px;
+	    
+	}
+
+	.cart_table th{
+	    width: 150px;
+	    padding: 10px;
+	    background-color: black;
+	    border-bottom: 1px solid #ccc;
+	}
+
+	.cart_table td{
+	    width: 350px;
+	    height: auto;
+	    padding: 10px;
+	    vertical-align: middle;
+	    border-bottom: 1px solid #ccc;
+	    
+	}
+    .main-session{
+      	background-color: #1F2124;
+	}
+
+	.container .main-session a .btn_review{
+	    background-color: #231F20;
+	    border-radius:5px;
+	    border-bottom: 10px;
+	    color: white !important;
+	    line-height: 5px;
+	    border-style: none; 
+	    padding: 10px 10px;
+	    border:2px solid white;
+	}
+	a:hover{
+	    color: #7EBDC2;
+	}
+}

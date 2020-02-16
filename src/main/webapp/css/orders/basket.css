@@ -1,0 +1,84 @@
+@charset "utf-8";
+
+@media ( min-width :376px) {
+	.container {
+		padding: 40px 0px;
+		color: black;
+	}
+	.container-top {
+		font-size: 30px;
+		line-height: 100px;
+		background-color: azure;
+	}
+
+	/*버튼*/
+	.a_btn {
+		border-radius: 4px;
+		display: inline-block;
+		width: 120px;
+		height: 30px;
+		padding: 5px 0px;
+		line-height: 28px;
+		text-align: center;
+		margin-top: 10px;
+		border: 0 none;
+		background-color: #7EBDC2;
+		color: white;
+		font-size: 16px;
+		font-weight: 700;
+	}
+	.delete-btn-area {
+		text-align: right;
+	}
+
+	/*컨텐츠 정보*/
+	.main-session {
+		padding: 30px 0px;
+	}
+	/*컨텐츠 하단*/
+	.total_product {
+		font-size: 13px;
+		text-align: left;
+		padding-left: 30px;
+		border-bottom: 1px solid black;
+	}
+	.total_product .info {
+		padding: 10px;
+	}
+	/*테이블*/
+	#cart_table {
+		width: 100%;
+		border-top: 1px solid black;
+		border-spacing: 0;
+		border-collapse: collapse;
+		border-bottom: 1px solid black;
+		text-align: center;
+	}
+	td {
+		border-bottom: 1px solid black;
+	}
+	.txt_origin_price {
+		text-decoration: line-through;
+		font-weight: 1000;
+		font-size: 15px;
+	}
+	th {
+		padding: 7px 5px;
+	}
+	tbody {
+		border-top: 1px solid black;
+	}
+	/*컨텐트 레이아웃 */
+	#content-top {
+		height: 50px;
+		line-height: 50px;
+	}
+	#content-session {
+		height: auto;
+	}
+	#content_footer {
+		padding: 30px 0px;
+		height: 300px;
+		line-height: 35px;
+	}
+}

@@ -1,0 +1,232 @@
+@charset "UTF-8";
+/*
+body{
+    overflow-y: hidden;
+}
+*/
+#header-nav{
+    height: 50px;
+    /*background-color: #1F2124;*/
+}
+#contents{
+    height: auto;
+}
+
+/* 상단 타이틀 및 카테고리 */
+.header-top{
+    line-height: 65px;
+}
+.header-top .header-left{
+}
+.header-top .header-left .title a img{
+    float: left;
+    width: 120px;
+    height: auto;
+    margin-top: 8px;
+}
+.header-top .header-left .category{
+    float: left;
+}
+.header-top .header-left .category a{
+    font-size: 14px;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 15px 15px 20px;
+}
+/*
+.header-top .header-left .category a:hover{
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 0 5px #03A9F4, 0 0 5px #03A9F4, 0 0 5px #03A9F4, 0 0 5px #03A9F4;
+}
+.header-top .header-left .category a:active{
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 0 5px #FFD74B, 0 0 5px #FFD74B, 0 0 5px #FFD74B, 0 0 5px #FFD74B;
+}
+*/
+/* 상단 로그인 및 마이페이지 */
+.header-top .header-right {
+    float: right;
+}
+.header-top .header-right a{
+    font-size: 14px;
+    color: #fff;
+    padding: 10px 15px 20px 15px;
+}
+/*
+.header-top .header-right a:hover{
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 0 5px #03A9F4, 0 0 5px #03A9F4, 0 0 5px #03A9F4, 0 0 5px #03A9F4;
+}
+.header-top .header-right a:active{
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 0 5px #FFD74B, 0 0 5px #FFD74B, 0 0 5px #FFD74B, 0 0 5px #FFD74B;
+}
+*/
+
+/* 상품경로
+.index-section{
+    position: relative;
+    width: 100%;
+    min-width: 1200px;
+    padding: 20px 0 20px 0;
+    box-sizing: border-box;
+}
+*/
+/* 정보 ul 표시제거 */
+ul{
+	list-style: none;
+}
+
+/* 상단 상품이미지, 선택칸 */
+.content1 #block1{
+	display: grid;
+	float: left;
+	width: 500px;
+    margin-top: 50px;
+	margin-left: 170px;
+}
+.content1 #block2{
+	display: grid;
+	float: right;
+	width: 500px;
+    margin-top: 80px;
+	margin-right: 170px;
+}
+.content1 li{
+    margin: 10px;
+}
+.search .block {
+	margin: 10px;
+}
+/* 상단 상품가격,선택칸 *//*
+.grid #block1{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 250px 250px;
+    margin-left: 180px;
+    margin-right: 180px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: inherit;
+}
+.grid #block2{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 100px 100px;
+    margin-left: 180px;
+    margin-right: 180px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: inherit;
+}*/
+/*
+#grid .block2{
+	display: grid;
+    
+	text-align: center;
+	width: 350px;
+	margin: 100px;
+	padding: 50px;
+}*/
+
+/* 상품선택칸 문자열 */
+li{
+	text-align: center;	
+}
+#block2 p{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #000;
+}
+.text-danger{
+    color: red;
+}
+.control-label{
+    color: #000;
+}
+
+/* 캘린더 */
+#block{
+    color: white;
+    height: 180px;
+    text-align: end;
+}
+#datepicker{
+    width: 150px;
+    height: 25px;
+}
+/*
+#form-group1 { 
+    margin-left: -20px;
+    margin-top: 10px;
+}
+#form-group2 {
+    margin-left: -20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.ui-datepicker{
+    z-index: 4 !important;
+}
+.control-label {
+    color:#333333;
+    font-size: 14px;
+    padding: 20px;
+}
+*/
+/* 버튼 */
+#block2 button{
+	margin-top: 10px;
+}
+
+/* 마우스오버 시 이미지 확대 */
+.scale {
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transition: all 0.3s ease-in-out; /* 부드러운 모션을 위해 추가 */
+}
+.scale:hover {
+  transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -o-transform: scale(1.5);
+}
+.img {
+    overflow:hidden;
+}
+
+/* 컨테이너 */
+.container {
+    width: auto;
+    margin: 0 auto;
+    height: auto;
+    background: #fff;
+}
+.content2 .block{
+	display: block;
+	margin-top: 600px;
+	padding: 0px;
+	border-top: 1px dotted #a4a4a4;
+}
+#footer {
+    text-align: center;
+    height: 180px;
+}
+
+/* 하단 정보 */
+.container .info{
+    height: 140px;
+    padding-top: 10px;
+}
+.container .info li dl .txt{
+    font-size: 12px;
+    color: #a4a4a4;
+}

@@ -1,0 +1,87 @@
+@charset "utf-8";
+/*기본 레이아웃:header,contents,footer*/
+@media (max-width: 375px){
+    #wrap{
+        clear: both;
+        width: 100%;
+        height: 100%;
+        color: #FFFFFF;
+    }
+    #header{
+        height: 140px;
+    }
+    #contents{
+        height: auto;
+    }
+    #footer{
+        height: 150px;
+    }
+    /*header*/
+    #header-top{
+        height: 90px;
+    }
+    #header-nav{
+        height: 50px;
+    }
+    /*contents*/
+    /*footer*/
+    #footer-nav{
+        height: 50px;
+    }
+    #footer-info{
+        height: 100px;
+    }
+}
+
+
+@media (min-width:376px){
+    #wrap{
+    clear: both;
+    width: 100%;
+    color: #FFFFFF;
+    height: 100%;
+    text-align: center;
+    animation-duration: 2s;
+    }
+    #header{
+        height: 70px;
+    }
+    
+    #contents{
+        height: auto;
+        background-color: white;
+    }
+    
+    #footer{
+        height: 140px;
+        border-top: 1px solid #e1e1e1;
+    }
+    /*header*/
+    #header-top{
+        height: 70px;
+        background-color: white;
+        border-bottom: 1px solid #e1e1e1;
+    }
+    /* 네비 부분은 필요할 경우에 사용 */
+    /* 
+    #header-nav{
+        height: 50px;
+        background-color: #1F2124;
+    }
+    */
+    /*contents*/
+    
+    /*footer*/
+    #footer-nav{
+        height: 10px;
+        background-color: white;
+    }
+    #footer-info{
+        height: 130px;
+        line-height: 20px;
+        font-size: 14px;
+        font-weight:700;
+        color: #323232;
+        background-color: white;
+    }
+}

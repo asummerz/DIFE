@@ -1,0 +1,35 @@
+@charset "UTF-8";
+.container{
+    height: auto;
+    padding: 50px 0px;
+}
+#content1  {
+    color: #323232;
+    font-weight: 600;
+    height: auto;
+}
+
+.container-login> #login-row> #login-column, #login-box {
+    padding: 50px 130px;
+}
+
+#select {
+    font-size: 1.3rem;
+    margin: 10px;
+    padding: 5px;
+    margin-left: 1040px;
+}
+
+#search {
+    font-size: 1.3rem;
+    margin: 10px;
+    padding: 10px;
+    vertical-align: bottom;
+}
+
+.pagination{
+    font-size: 1.5rem;
+    color: black !important;
+}
+
+

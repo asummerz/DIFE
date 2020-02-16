@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+  <!-- 아이디 중복검사 -->
+  <select id="checkId" resultType="java.lang.Integer" parameterType="String">
+  	select count(*) from member where mem_id = #{mem_id}
+  </select>
+  
+  <!-- 회원가입 -->
+  <insert id="in_member">
+  	insert into member values('M'||lpad(seq_mem.nextval,4,0),1,#{mem_id},#{mem_pwd},#{mem_pwd_check},#{mem_name},#{mem_birth},#{mem_gender},#{mem_tel},#{mem_email},#{mem_fname},#{mem_name},sysdate,#{mem_name},sysdate)
+  </insert>
+  
+  <!-- 로그인 -->
+  <select id="isMember" resultType="java.lang.Integer">
+	select count(*) from member where mem_id=#{mem_id} and mem_pwd=#{mem_pwd} 
+  </select>
+
+</mapper>

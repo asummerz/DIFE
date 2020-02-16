@@ -1,0 +1,66 @@
+@charset "UTF-8";
+.container{
+    height: 700px;
+}
+#content1  {
+    color: #323232;
+    font-weight: 600;
+    height: auto;
+}
+
+.container-login> #login-row> #login-column, #login-box {
+    padding: 50px 130px;
+}
+
+#btn{
+    background-color: #7EBDC2;
+    border-color: #7EBDC2;
+    color: #ffffff;
+    font-weight: 700;
+    margin-top: 5px;
+    margin-left: 165px;
+}
+
+.btn:hover{
+}
+
+.text-center{
+    font-weight: 700;
+    font-size: 25px;
+}
+#register-link{
+    text-align: right;
+    margin-top: -26px;
+    padding: 15px 80px;
+}
+
+#found{
+    text-align: right;
+    margin-top: -57px;
+}
+
+.form-group{
+    padding: 25px 80px;
+    text-align: left;
+}
+
+.form-control{
+	font-size: 13px;
+}
+.text-info1{
+    padding-bottom: 20px !important;
+    color: #323232;
+}
+
+#mem_id{
+    padding: 5px;
+    width: 400px;
+    border-radius: 4px;
+}
+
+#mem_pwd{
+    padding: 5px;
+    width: 400px;
+    border-radius: 4px;
+}
+

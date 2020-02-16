@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="orders">
+
+  <!-- 회원의 장바구니 목록 -->
+  <select id="selectBasket" resultType="basketVo">
+   select ps.bas_no bas_no,d.dro_name dro_name,p.mem_name mem_name,bas_amount,bas_price,bas_rental,bas_return,bas_time,pos_no,dro_series,pil_career,dro_photo,pos_price,bas_price*0.01 point from (
+select bas_no,p.pos_no,mem_no,bas_amount,bas_price,bas_rental,bas_return,bas_time,pil_no,dro_no,pos_price from (select b.* from basket b,member m where m.mem_no=b.mem_no and m.mem_no =
+ (select mem_no from member where mem_id=#{mem_id})) b,possesion p where b.pos_no = p.pos_no)
+ps left outer join drone d on (ps.dro_no= d.dro_no) left outer join (select pil_no,mem_name,pil_career from pilot p,member m where p.mem_no = m.mem_no) p on (ps.pil_no=p.pil_no) order by bas_no
+  </select>
+  <!-- 주문삭제 버튼 클릭시 장바구니 삭제 -->
+	<delete id="delBas">
+		delete basket where bas_no=#{bas_no}
+	</delete>
+  <!-- orders insert 및 ordersDetail insert transaction -->
+  
+  <!--  orders max(getNextNo) -->
+  	<select id="getOrd" resultType="java.lang.Integer">
+  		select nvl(max(ord_no),0)+1 from orders
+  	</select>
+
+</mapper>

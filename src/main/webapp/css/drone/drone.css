@@ -1,0 +1,549 @@
+@charset "UTF-8";
+#header{
+    height: 120px;
+}
+
+#header-nav{
+    height: 50px;
+    line-height: 50px;
+    background-color: #383A3F;
+    vertical-align: middle;
+}
+
+svg{
+	padding-left: 10px;
+}
+/* 달력 */
+#block{
+    color: white;
+    height: 180px;
+    text-align: end;
+}
+#datepicker{
+    width: 150px;
+    height: 25px;
+}
+
+/* 검색 */
+.search{
+    font-size: 15px;
+    display: inline-flex;
+    list-style: none;
+    color: white;
+    padding: 0px 10px;
+}
+#calendar,.search1{
+    padding: 0px 10px;
+    font-size: 16px;
+}
+#btnSch{
+    width: 120px;
+    padding: 5px;
+    font-size: 17px;
+    font-weight: 700;
+    margin-top: 7px;
+}
+
+.search li{
+    width: 180px;
+}
+.search  .fa{
+    margin-left: 10px;
+    margin-top: 4px;
+}
+.sub-menu-1{
+    display: none;
+}
+.sub-menu-2 li{
+    font-size: 13px;
+}
+
+ul li:hover .sub-menu-1 {
+    display: block;
+    position: absolute;
+    background-color: white;
+    margin-top: 0px;
+    margin-left: 0px;
+    z-index: 9999;
+    padding: 0px 10px;
+}
+ul li:hover .sub-menu-1 ul{
+    display: block;@charset "UTF-8";
+#header{
+    height: 120px;
+}
+#header-nav{
+    height: 50px;
+    line-height: 50px;
+    background-color: #383A3F;
+    vertical-align: middle;
+}
+svg{
+	padding-left: 10px;
+}
+
+/* 달력 */
+#block{
+    color: white;
+    height: 180px;
+    text-align: end;
+}
+#datepicker{
+    width: 150px;
+    height: 25px;
+}
+
+/* 검색 */
+.search{
+    font-size: 15px;
+    display: inline-flex;
+    list-style: none;
+    color: white;
+    padding: 0px 10px;
+}
+#calendar,.search1{
+    padding: 0px 10px;
+    font-size: 16px;
+}
+#btnSch{
+    width: 120px;
+    padding: 5px;
+    font-size: 17px;
+    font-weight: 700;
+    margin-top: 7px;
+}
+.search li{
+    width: 180px;
+}
+.search  .fa{
+    margin-left: 10px;
+    margin-top: 4px;
+}
+.sub-menu-1{
+    display: none;
+}
+.sub-menu-2 li{
+    font-size: 13px;
+}
+.search1 {
+	cursor: pointer;
+}
+ul li:hover .sub-menu-1 {
+    display: block;
+    position: absolute;
+    background-color: white;
+    margin-top: 0px;
+    margin-left: 0px;
+    z-index: 9999;
+    padding: 0px 10px;
+}
+ul li:hover .sub-menu-1 ul{
+    display: block;
+    margin: 5px;
+}
+ul li:hover .sub-menu-1 ul li{
+    width: 190px;
+    border-bottom: 0.5px dotted #383A3F;
+    text-align: left;
+}
+ul li:hover .sub-menu-1 ul li:last-child{
+    border-bottom: none;
+}
+ul li:hover .sub-menu-1 ul li:hover{
+    color: #383A3F;    
+    font-weight: bold;
+    background-color: #FFF9C4;
+    -moz-border-radius: 10px; /* 모서리 둥글게 */  
+	-webkit-border-radius: 10px; /* 모서리 둥글게 */  
+/*  text-shadow: 0 0 5px #40C4FF, 0 0 5px #40C4FF, 0 0 5px #40C4FF, 0 0 5px #40C4FF;
+    text-shadow: 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4;	*/
+}
+.fas fa-angle-right{
+    float: right;
+}
+.sub-menu-2{
+    display: none;
+    color: white;
+    padding: 0px 10px;
+}
+.hover-dro:hover .sub-menu-2{
+    position: absolute;
+    display: block;
+    margin-top: -55px;
+    margin-left: 210px;
+    background-color: white;
+}
+.sub-menu-2 ul li:hover{
+    /*background-color: #03A9F4;*/
+    border-radius: 7px;
+}
+
+/* 컨테이너 */
+.container{
+    width: auto;
+    max-width: 1300px;
+    margin: 0 auto;
+    height: auto;
+}
+/* 상품이미지 */
+#drone-grid{
+	display: grid;
+	grid-template-columns: repeat(4,1fr);
+	/* grid-template-rows: 400px 400px 400px 400px; */
+    padding: 60px 10px 40px 10px;
+}
+
+/* 상품이미지 */
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
+/*간격 조정은 이거로 하시면 되요!*/
+.block{
+	margin-bottom: 50px;
+}
+figure.block {
+  font-family: 'Raleway', Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+  margin-left: 10px;
+  margin-bottom: 50px;
+  min-width: 220px;
+  max-width: 300px;
+  max-height: 450px;
+  width: 100%;
+  /*최대한 살리려고 했는데 background색 때문에 부득이하게 조금 변경된 부분이 있습니다.*/
+    background-color:#000;
+    background-clip: padding-box;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 0 px rgba(0, 0, 0, 0.15);
+  font-size: 16px;
+  padding-bottom: 10px;
+}
+figure.block * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.45s ease-in-out;
+  transition: all 0.45s ease-in-out;
+}
+figure.block img {
+  max-width: 100%;
+  position: relative;
+  opacity: 0.9;
+}
+#contents .block {
+	width: 300px;
+	height: 420px;
+	padding-bottom: 0px;
+}
+
+figure.block figcaption {
+  position: absolute;
+  top: 45%;
+  left: 7%;
+  right: 7%;
+  bottom: 45%;
+  border: 1px solid white;
+  border-width: 1px 1px 0;
+}
+figure.block .heading {
+  overflow: hidden;
+  -webkit-transform: translateY(50%);
+  transform: translateY(50%);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+figure.block h2 {
+  display: table;
+  margin: 0 auto;
+  padding: 0 10px;
+  position: relative;
+  text-align: center;
+  width: auto;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+figure.block h2 span {
+  font-weight: 800;
+}
+figure.block h2:before,
+figure.block h2:after {
+  position: absolute;
+  display: block;
+  width: 1000%;
+  height: 1px;
+  content: '';
+  background: white;
+  top: 50%;
+}
+figure.block h2:before {
+  left: -1000%;
+}
+figure.block h2:after {
+  right: -1000%;
+}
+figure.block p {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  position: absolute;
+  width: 100%;
+  padding: 0 20px;
+  margin: 0;
+  opacity: 0;
+  line-height: 1.6em;
+  font-size: 0.9em;
+}
+figure.block a {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 1;
+  margin: 5px;
+}
+figure.block:hover img,
+figure.block.hover img {
+  opacity: 0.25;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+figure.block:hover figcaption,
+figure.block.hover figcaption {
+  top: 7%;
+  bottom: 7%;
+}
+figure.block:hover p,
+figure.block.hover p {
+  opacity: 1;
+  -webkit-transition-delay: 0.35s;
+  transition-delay: 0.35s;
+}
+figcaption p span{
+    font-weight: bold;
+}
+#dro-md{
+	font-weight: normal;
+	font-size: 17px;
+}
+.block img{
+    width: 300px;
+    height: 420px;
+}
+
+/* 페이징처리 */
+.btnPaging{
+    padding: 10px;
+}
+.btnPaging li {
+    text-align: center;    
+}
+
+/* 드론 비교하는건 여기서 설정하시면 됩니다. */
+#footer-nav{
+	
+}
+    margin: 5px;
+}
+ul li:hover .sub-menu-1 ul li{
+    width: 200px;
+    border-bottom: 0.5px dotted #383A3F;
+    text-align: left;
+}
+ul li:hover .sub-menu-1 ul li:last-child{
+    border-bottom: none;
+}
+ul li:hover .sub-menu-1 ul li:hover{
+    color: #fff;   
+    /* background-color: #FFD54F; */ 
+    text-shadow: 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4;
+}
+.fas fa-angle-right{
+    float: right;
+}
+.sub-menu-2{
+    display: none;
+    color: white;
+    padding: 0px 10px;
+}
+.hover-dro:hover .sub-menu-2{
+    position: absolute;
+    display: block;
+    margin-top: -55px;
+    margin-left: 210px;
+    background-color: white;
+}
+.sub-menu-2 ul li:hover{
+    /*background-color: #03A9F4;*/
+    border-radius: 7px;
+}
+
+/* 컨테이너 */
+.container{
+    width: auto;
+    max-width: 1300px;
+    margin: 0 auto;
+    height: auto;
+}
+/* 상품이미지 */
+#drone-grid{
+	display: grid;
+	grid-template-columns: repeat(4,1fr);
+	/* grid-template-rows: 400px 400px 400px 400px; */
+    padding: 60px 10px 40px 10px;
+}
+
+/* 상품이미지 */
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
+/*간격 조정은 이거로 하시면 되요!*/
+.block{
+	margin-bottom: 50px;
+}
+figure.block {
+  font-family: 'Raleway', Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+  margin-left: 10px;
+  margin-bottom: 50px;
+  min-width: 220px;
+  max-width: 300px;
+  max-height: 450px;
+  width: 100%;
+  /*최대한 살리려고 했는데 background색 때문에 부득이하게 조금 변경된 부분이 있습니다.*/
+    background-color:#000;
+    background-clip: padding-box;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 0 px rgba(0, 0, 0, 0.15);
+  font-size: 16px;
+  padding-bottom: 10px;
+}
+figure.block * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.45s ease-in-out;
+  transition: all 0.45s ease-in-out;
+}
+figure.block img {
+  max-width: 100%;
+  position: relative;
+  opacity: 0.9;
+}
+#contents .block {
+	width: 300px;
+	height: 420px;
+	padding-bottom: 0px;
+}
+
+figure.block figcaption {
+  position: absolute;
+  top: 45%;
+  left: 7%;
+  right: 7%;
+  bottom: 45%;
+  border: 1px solid white;
+  border-width: 1px 1px 0;
+}
+figure.block .heading {
+  overflow: hidden;
+  -webkit-transform: translateY(50%);
+  transform: translateY(50%);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+figure.block h2 {
+  display: table;
+  margin: 0 auto;
+  padding: 0 10px;
+  position: relative;
+  text-align: center;
+  width: auto;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+figure.block h2 span {
+  font-weight: 800;
+}
+figure.block h2:before,
+figure.block h2:after {
+  position: absolute;
+  display: block;
+  width: 1000%;
+  height: 1px;
+  content: '';
+  background: white;
+  top: 50%;
+}
+figure.block h2:before {
+  left: -1000%;
+}
+figure.block h2:after {
+  right: -1000%;
+}
+figure.block p {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  position: absolute;
+  width: 100%;
+  padding: 0 20px;
+  margin: 0;
+  opacity: 0;
+  line-height: 1.6em;
+  font-size: 0.9em;
+}
+figure.block a {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 1;
+  margin: 5px;
+}
+figure.block:hover img,
+figure.block.hover img {
+  opacity: 0.25;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+figure.block:hover figcaption,
+figure.block.hover figcaption {
+  top: 7%;
+  bottom: 7%;
+}
+figure.block:hover p,
+figure.block.hover p {
+  opacity: 1;
+  -webkit-transition-delay: 0.35s;
+  transition-delay: 0.35s;
+}
+figcaption p span{
+    font-weight: bold;
+}
+#dro-md{
+	font-weight: normal;
+	font-size: 17px;
+}
+.block img{
+    width: 300px;
+    height: 420px;
+}
+/*
+fas fa-won-sign{
+	font-size: 5px;
+}
+*/
+/* 페이징처리 */
+.btnPaging{
+    padding: 10px;
+}
+.btnPaging li {
+    text-align: center;    
+}
+
+/* 드론 비교하는건 여기서 설정하시면 됩니다. */
+#footer-nav{
+	
+}

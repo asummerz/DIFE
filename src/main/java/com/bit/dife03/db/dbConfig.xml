@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<properties resource="com/bit/dife03/db/db.properties"/>
+<typeAliases>
+	<typeAlias type="com.bit.dife03.vo.PilListVo" alias="pilListVo"/>
+	<typeAlias type="com.bit.dife03.vo.MemberVo" alias="memberVo"/>
+	<typeAlias type="com.bit.dife03.vo.AdminVo" alias="adminVo"/>
+	<typeAlias type="com.bit.dife03.vo.BoardVo" alias="boardVo"/>
+	<typeAlias type="com.bit.dife03.vo.BasketVo" alias="basketVo"/>
+	<typeAlias type="com.bit.dife03.vo.DroneVo" alias="droneVo"/>
+</typeAliases>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+ 	<mapper resource="com/bit/dife03/db/pilotMapper.xml"/>
+    <mapper resource="com/bit/dife03/db/memberMapper.xml"/>
+    <mapper resource="com/bit/dife03/db/adminMapper.xml"/>
+    <mapper resource="com/bit/dife03/db/boardMapper.xml"/>
+    <mapper resource="com/bit/dife03/db/ordersMapper.xml"/>
+    <mapper resource="com/bit/dife03/db/droneMapper.xml"/>
+  </mappers>
+</configuration>

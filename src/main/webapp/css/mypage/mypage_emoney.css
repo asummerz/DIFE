@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+.container{
+	padding-bottom: 50px;
+}
+#hr{
+    background-color: #7EBDC2;
+    border-color: #7EBDC2;
+}
+#mypage-bottom-right{
+    font-size: 15px;
+    padding: 15px 20px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+#mypage-emoney{
+    font-size: 25px;
+    text-align: left;
+    padding: 5px;
+}
+#emoney{
+    margin: 15px 0px;
+    padding: 20px;
+    font-size: 20px;
+    float: right;
+}
+#emoney-amount{
+    font-size: 25px;
+    color: #2f6064;
+}
+#mypage-coupon{
+    margin: 50px 0px;
+    font-size: 25px;
+    text-align: left;
+    padding: 10px;
+}
+
+.mypage-table{
+	margin: 20px 0px;
+    width: 850px;
+    border-collapse: collapse;
+    padding-bottom: 20px;
+}
+th{
+    padding: 10px 0px;
+    border-top: 1.5px solid #7EBDC2;
+    border-bottom: 0.3px solid #e1e1e1;
+}
+td{
+    padding: 10px 0px;
+     border-bottom: 0.3px solid #e1e1e1;
+}

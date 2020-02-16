@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+#res-form{
+    width: 700px;
+    height: 450px;
+    padding: 30px;
+    color: #343434;
+    text-align: center;
+}
+#res-title{
+    padding: 7px;
+    font-weight: 700;
+    border-bottom: 1.5px solid #7EBDC2;
+}
+
+#res-table{
+    margin: 10px;
+    text-align: left;
+    width: 680px;
+    border-collapse: collapse;
+}
+td{
+    padding: 10px 20px;
+    border-bottom: 1px solid white;
+}
+.res-time{
+    margin-right: 5px;
+}
+#res-attend{
+    width: 200px;
+    height: 25px;
+}
+#res-submit{
+    width: 150px;
+    font-size: 15px;
+    color: white;
+    padding: 5px 15px;
+    margin: 5px;
+    border-radius: 4px;
+    background-color: #7EBDC2;
+    border:0 none;
+	cursor:pointer;
+}
+.res-info{
+    color: #a4a4a4;
+    font-size: 12px;
+    padding-left: 15px;
+}

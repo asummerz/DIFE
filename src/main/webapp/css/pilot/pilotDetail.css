@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+/* 중앙 컨텐츠 */
+#grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#grid2{
+    display: grid;
+    grid-template-columns: 700px 400px;
+}
+
+/* 컨텐츠 윗부분*/
+#block1{
+    color: white;
+    height: 180px;
+    padding-top: 25px;
+    padding-left: 15px;
+    padding-bottom: 15px;
+}
+#block1 .top{
+    text-align: left;
+    font-size: 15px;
+    line-height: 25px;
+}
+#block1 img{
+    width: 180px;
+    height: auto;
+    float: left;
+    padding: 0px 25px 0px 0px;
+}
+#block1 .pil-name{
+    color: #a4a4a4;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 20px;
+}
+
+#pil-title{
+	font-size:17px;
+	font-weight: bold;
+}
+/*캘린더 및 상담버튼*/
+#block5{
+    color: #323232;
+    height: 180px;
+    text-align: end;
+}
+#calendar{
+    font-size: 15px;
+    padding: 60px 15px 0px 0px;
+}
+#datepicker{
+    width: 150px;
+    height: 25px;
+}
+#pil_btn{
+	background-color: #7EBDC2;
+	color: white;
+    font-size: 16px;
+    width: 160px;
+    height: 33px;
+    padding: 5px 10px;
+    margin: 15px;
+}
+#pil_btn:hover{
+ 
+}
+
+/*기본정보 및 상세정보 */
+#block2, #block3 {
+    color: #a4a4a4;
+    height: auto;
+    font-weight: 600;
+}
+
+.mid1{
+    padding: 20px 50px;
+    text-align: left;
+}
+.info_det{
+	padding: 5px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.pil-information{
+    font-size: 15px;
+	padding: 5px 20px;
+}
+
+
+
+
+/*포트폴리오*/
+#block4{
+	padding: 50px 0px;
+    height: auto;
+}
+
+#block4 .pil-portfolio{
+    width: 1000px;
+    height: auto;
+    overflow: hidden;
+    padding: 30px 10px;
+}
+
+/* 강좌 정보 */
+#pil-intro{
+	padding-top: 70px;
+}

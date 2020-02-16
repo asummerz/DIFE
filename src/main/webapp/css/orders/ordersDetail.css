@@ -1,0 +1,70 @@
+@charset "UTF-8";
+.container{
+    color: #323232;
+}
+#hr{
+    background-color: #7EBDC2;
+    border-color: #7EBDC2;
+}
+#mypage-orders{
+    text-align: left;
+    font-size: 25px;
+    font-weight: 600;
+    padding: 5px 10px;
+}
+#ordersDetail-number{
+    font-size: 20px;
+    color: #2f6064;
+    float: right;
+}
+.mypage-orders-list{
+    padding: 20px 20px;
+    text-align: left;
+}
+#detail-table{
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+}
+#thead th{
+    padding: 10px 0px;
+    border-bottom: 2px solid #7EBDC2;
+}
+#tbody td{
+    padding: 10px 0px;
+    border-bottom: 0.3px solid #a4a4a4;
+}
+
+.detail-img{
+    width: 60px;
+    height: 60px;
+    float: left;
+    padding-left: 50px;
+}
+.img-name{
+    font-weight: 600;
+    float: left;
+    padding: 20px 20px;
+}
+.detail{
+    padding: 40px 0px;
+}
+.detail-title{
+    font-size: 20px;
+    font-weight: 700;
+    padding: 10px 0px;
+    border-bottom: 1.5px solid #7EBDC2;
+}
+.detail-info{
+    text-align: left;
+    width: 100%;
+    border-collapse: collapse;
+    border-color: none;
+}
+.detail-tr td{
+    padding: 15px;
+}
+.td{
+    font-weight: 550;
+}
+
