@@ -1,0 +1,330 @@
+
+
+--create
+
+
+
+CREATE TABLE member (				
+	mem_no 	varchar2(20) 	primary key,	
+	mem_lev 	number 		NOT NULL,
+	mem_id 	varchar2(20) 	unique 	NOT NULL,
+	mem_pwd 	varchar2(20) 		NOT NULL,
+	mem_pwd_check 	varchar2(20) 		NOT NULL,
+	mem_name 	varchar2(20) 		NOT NULL,
+	mem_birth 	date 		NOT NULL,
+	mem_gender 	varchar2(20) 		NOT NULL,
+	mem_tel 	varchar2(20) 		NOT NULL,
+	mem_email 	varchar2(20) 		NOT NULL,
+	mem_fname	varchar2(50) 		NOT NULL,
+	first 	varchar2(20) 		NOT NULL,
+	first_time 	date 		NOT NULL,
+	last 	varchar2(20) 		NOT NULL,
+	last_time 	date 		NOT NULL,
+    mem_point number default 0
+);						
+CREATE TABLE pilot (				
+	pil_no 	varchar2(20) 	primary key,	
+	mem_no 	varchar2(20) 		NOT NULL,
+	pil_ok 	varchar2(20) 		NOT NULL,
+	pil_portfolio 	varchar2(100) 		NULL,
+	pil_portphoto 	varchar2(50) 		NOT NULL,
+	pil_career 	varchar2(20) 		NOT NULL,
+	pil_drone 	varchar2(20) 		NOT NULL,
+	pil_category 	number 		NOT NULL,
+	pil_loc 	varchar2(20) 		NOT NULL,
+	first 	varchar2(20) 		NOT NULL,
+	first_time 	date 		NOT NULL,
+	last 	varchar2(20) 		NOT NULL,
+	last_time 	date 		NOT NULL
+);				
+				
+            ALTER TABLE pilot ADD  ( FOREIGN KEY (mem_no) REFERENCES member ) ;
+CREATE TABLE drone (				
+	dro_no	varchar2(20)	primary key,	
+	dro_name	varchar2(50)		NOT NULL,
+	dro_series	varchar2(20)		NULL,
+	dro_series_no	varchar2(20)		NULL,
+	dro_made	varchar2(20)		NOT NULL,
+	dro_photo	varchar2(20)		NULL,
+	first	varchar2(20)		NOT NULL,
+	first_time	date		NOT NULL,
+	last	varchar2(20)		NOT NULL,
+	last_time	date		NOT NULL
+);
+
+CREATE TABLE rental (				
+	ren_no	varchar2(20)	primary key,	
+	ren_name	varchar2(20)		NOT NULL,
+	ren_tel	varchar2(20)		NOT NULL,
+	ren_loc	varchar2(20)		NOT NULL,
+	first	varchar2(20)		NOT NULL,
+	first_time	date		NOT NULL,
+	last	varchar2(20)		NOT NULL,
+	last_time	date		NOT NULL
+);	
+CREATE TABLE possesion (				
+	pos_no	varchar2(20)	primary key,	
+	pil_no	varchar2(20)		NULL,
+	dro_no	varchar2(20)		NULL,
+	ren_no	varchar2(20)		NULL,
+	pos_amount	number		NOT NULL,
+	pos_price	number		NULL,
+	first	varchar2(20)		NOT NULL,
+	first_time	date		NOT NULL,
+	last	varchar2(20)		NOT NULL,
+	last_time	date		NOT NULL
+);			
+ALTER TABLE possesion			
+       ADD  ( FOREIGN KEY (pil_no)			
+                             REFERENCES pilot ) ;			
+			
+ALTER TABLE possesion			
+       ADD  ( FOREIGN KEY (dro_no)			
+                             REFERENCES drone ) ;			
+			
+ALTER TABLE possesion			
+       ADD  ( FOREIGN KEY (ren_no)			
+                             REFERENCES rental ) ;	
+    CREATE TABLE basket (				
+	bas_no 	varchar2(20) 	primary key,	
+	pos_no 	varchar2(20) 		NOT NULL,
+	mem_no 	varchar2(20) 		NOT NULL,
+	bas_amount 	number 		NOT NULL,
+	bas_price 	number 		NOT NULL,
+	bas_rental 	date 		NOT NULL,
+	bas_return 	date 		NOT NULL,
+	bas_time 	date 		NOT NULL
+);				
+                           ALTER TABLE basket			
+       ADD  ( FOREIGN KEY (mem_no)			
+                             REFERENCES member ) ;			
+			
+ALTER TABLE basket			
+       ADD  ( FOREIGN KEY (pos_no)			
+                             REFERENCES possesion ) ;			
+                             CREATE TABLE orders (				
+	ord_no 	varchar2(20) 	primary key,	
+	mem_no 	varchar2(20) 		NOT NULL,
+	ord_amount 	number 		NOT NULL,
+	ord_price 	number 		NOT NULL,
+	ord_sale 	number 		NULL,
+	ord_fin_price	number 		NOT NULL,
+	ord_date	date		NOT NULL,
+	ord_pay_state	number(1)		NOT NULL
+				
+);				
+ALTER TABLE basket			
+       ADD  ( FOREIGN KEY (mem_no)			
+                             REFERENCES member ) ;			
+			
+ALTER TABLE basket			
+       ADD  ( FOREIGN KEY (pos_no)			
+                             REFERENCES possesion ) ;		
+CREATE TABLE orders (				
+	ord_no 	varchar2(20) 	primary key,	
+	mem_no 	varchar2(20) 		NOT NULL,
+	ord_amount 	number 		NOT NULL,
+	ord_price 	number 		NOT NULL,
+	ord_sale 	number 		NULL,
+	ord_fin_price	number 		NOT NULL,
+	ord_date	date		NOT NULL,
+	ord_pay_state	number(1)		NOT NULL
+				
+);	
+
+ALTER TABLE orders			
+       ADD  ( FOREIGN KEY (mem_no)			
+                             REFERENCES member ) ;		
+
+CREATE TABLE ordersDetail (				
+	det_no 	varchar2(20) 	primary key,	
+	ord_no 	varchar2(20) 		NOT NULL,
+	pos_no 	varchar2(20) 		NOT NULL,
+	det_amount 	number 		NOT NULL,
+	det_price 	number 		NOT NULL,
+	det_rental 	date 		NOT NULL,
+	det_return 	date 		NOT NULL
+);				
+
+ALTER TABLE ordersDetail			
+       ADD  ( FOREIGN KEY (ord_no)			
+                             REFERENCES orders ) ;			
+			
+ALTER TABLE ordersDetail			
+       ADD  ( FOREIGN KEY (pos_no)			
+                             REFERENCES possesion ) ;			
+     
+
+                
+--insert
+
+
+insert into member values('M0001', 1, 'hong', 'hong1234', 'hong1234', '홍길동', '800101', '남자', '010-1234-5678', 'hong@email.com','member1.jpg' ,'홍길동', sysdate, '홍길동', sysdate,5000);																			
+insert into member values('M0002', 1, 'lee', 'lee1234', 'lee1234', '이순신', '810506', '남자', '010-8979-5482', 'lee@email.com','member2.jpg' , '이순신', sysdate, '이순신', sysdate,0);																			
+insert into member values('M0003', 1, 'you', 'you1234', 'you1234', '유관순', '820708', '여자', '010-2256-8895', 'you@email.com','member3.jpg' , '유관순', sysdate, '유관순', sysdate,0);																			
+insert into member values('M0004', 2, 'kang', 'kang1234', 'kang1234', '강감찬', '870511', '남자', '010-6588-9788', 'kang@email.com','member4.jpg' , '강감찬', sysdate, '강감찬', sysdate,0);																			
+insert into member values('M0005', 1, 'han', 'han1234', 'han1234', '한효주', '880428', '여자', '010-2487-6855', 'han@email.com','member5.jpg' , '한효주', sysdate, '한효주', sysdate,0);																			
+insert into member values('M0006', 1, 'ha', 'ha1234', 'ha1234', '하춘화', '580915', '여자', '010-5688-9978', 'ha@email.com','member6.jpg' , '하춘화', sysdate, '하춘화', sysdate,0);																			
+insert into member values('M0007', 1, 'kim', 'kim1234', 'kim1234', '김지원', '871105', '여자', '010-1124-8865', 'kim@email.com','member7.jpg' , '김지원', sysdate, '김지원', sysdate,0);																			
+insert into member values('M0008', '1', 'lim', 'lim1234', 'lim1234', '임창정', '781022', '남자', '010-1234-8856', 'lim@email.com', 'member8.jpg' ,'임창정', sysdate, '임창정', sysdate,0);																			
+insert into member values('M0009', 2, 'cha', 'cha1234', 'cha1234', '차승원', '710511', '남자', '010-4785-9865', 'cha@email.com', 'member9.jpg' ,'차승원', sysdate, '차승원', sysdate,0);																			
+insert into member values('M0010', 2, 'park', 'park1234', 'park1234', '박보영', '900608', '여자', '010-7748-8652', 'park@email.com','member10.jpg' , '박보영', sysdate, '박보영', sysdate,0);																			
+insert into member values('M0011', 1, 'jih', 'jih1234', 'jih1234', '김지현', '880914', '여자', '010-2222-4586', 'jih@email.com','member11.jpg' , '김지현', sysdate, '김지현', sysdate,0);																			
+insert into member values('M0012', 1, 'youg', 'yong1234', 'yong1234', '김영희', '870612', '여자', '010-1659-8426', 'youg@email.com','member12.jpg' , '김영희', sysdate, '김영희', sysdate,0);																			
+insert into member values('M0013', 2, 'chul', 'chul1234', 'cul1234', '김철수', '700305', '남자', '010-2257-5586', 'chul@email.com','member13.jpg' , '김철수', sysdate, '김철수', sysdate,0);																			
+insert into member values('M0014', 1, 'eunwoo', 'eunwoo1234', 'eunwoo1234', '차은우', '760409', '남자', '010-3216-4851', 'eunwoo@email.com','member14.jpg' , '차은우', sysdate, '차은우', sysdate,0);																			
+insert into member values('M0015', 2, 'jinwoong', 'jinwoong1234', 'jinwoong1234', '조진웅', '900105', '남자', '010-2267-1454', 'jinwoong@email.com','member15.jpg' , '조진웅', sysdate, '조진웅', sysdate,0);																			
+insert into member values('M0016', 1, 'youngja', 'youngja1234', 'youngja1234', '이영자', '920719', '여자', '010-2257-6685', 'youngja@email.com', 'member16.jpg' ,'이영자', sysdate, '이영자', sysdate,0);																			
+insert into member values('M0017', 1, 'song', 'song1234', 'song1234', '송은이', '760304', '여자', '010-2215-1147', 'song@email.com','member17.jpg' , '송은이', sysdate, '송은이', sysdate,0);																			
+insert into member values('M0018', 2, 'sara', 'sara1234', 'sara1234', '이사라', '821117', '여자', '010-3269-5548', 'sara@email.com', 'member18.jpg' ,'이사라', sysdate, '이사라', sysdate,0);																			
+insert into member values('M0019', 1, 'eunhee', 'eunhee1234', 'eunhee1234', '우은희', '860807', '여자', '010-0157-8651', 'eunhee@email.com','member19.jpg' , '우은희', sysdate, '우은희', sysdate,0);																			
+insert into member values('M0020', 1, 'jisu', 'jisu1234', 'jisu1234', '이지수', '900524', '여자', '010-5589-6666', 'jisu@email.com', 'member20.jpg' ,'이지수', sysdate, '이지수', sysdate,0);																			
+insert into member values('M0021', 2, 'junyoung', 'junyoung1234', 'junyoung1234', '이준영', '871023', '남자', '010-1148-6352', 'junyoung@email.com','member21.jpg' , '이준영', sysdate, '이준영', sysdate,0);																			
+insert into member values('M0022', 2, 'bora', 'bora1234', 'bora1234', '김보라', '881026', '여자', '010-7789-5632', 'bora@email.com','member25.jpg', '김보라', sysdate, '김보라', sysdate,0);																			
+insert into member values('M0023', 1, 'dong', 'dong1234', 'dong1234', '김동규', '901011', '남자', '010-3325-4484', 'dong@email.com', 'member22.jpg' ,'김동규', sysdate, '김동규', sysdate,0);																			
+insert into member values('M0024', 2, 'bohun', 'bohun1234', 'bohun1234', '김보훈', '910205', '남자', '010-1568-6698', 'bohun@email.com', 'member23.jpg' ,'김보훈', sysdate, '김보훈', sysdate,0);																			
+insert into member values('M0025', 0, 'admin', '1234', '1234', '관리자', '900524', '남자', '010-5589-6742', 'admin@email.com','member24.jpg' , '관리자', sysdate, '관리자', sysdate,0);			
+
+insert into pilot values('PL0001','M0004', '승인', '포트폴리오', 'pilot01.jpg', 5, 'N', 2, '서울', 'M0004', sysdate, 'M0004', sysdate);														
+insert into pilot values('PL0002','M0009', '승인', '포트폴리오', 'pilot02.jpg', 3, 'N', 1, '서울', 'M0009', sysdate, 'M0009', sysdate);														
+insert into pilot values('PL0003','M0010', '승인', '포트폴리오', 'pilot03.jpg', 3, 'Y', 1, '제주', 'M0010', sysdate, 'M0010', sysdate);														
+insert into pilot values('PL0004','M0013', '미승인', '포트폴리오', 'pilot04.jpg', 1, 'Y', 1, '부산', 'M0013', sysdate, 'M0013', sysdate);														
+insert into pilot values('PL0005','M0015', '승인', '포트폴리오', 'pilot06.jpg', 5, 'Y', 2, '대전', 'M0021', sysdate, 'M0021', sysdate);														
+insert into pilot values('PL0006','M0018', '미승인', '포트폴리오', 'pilot06.jpg', 5, 'Y', 2, '대전', 'M0018', sysdate, 'M0018', sysdate);														
+insert into pilot values('PL0007','M0021', '미승인', '포트폴리오', 'pilot07.jpg', 7, 'Y', 0, '경기', 'M0021', sysdate, 'M0021', sysdate);														
+insert into pilot values('PL0008','M0022', '승인', '포트폴리오', 'pilot08.jpg', 3, 'N', 0, '파주', 'M0022', sysdate, 'M0022', sysdate);														
+insert into pilot values('PL0009','M0024', '승인', '포트폴리오', 'pilot09.jpg', 3, 'N', 1, '제주', 'M0024', sysdate, 'M0024', sysdate);														
+insert into pilot values('PL0010','M0025', '승인', '포트폴리오', 'pilot10.jpg', 2, 'Y', 1, '부산', 'M0025', sysdate, 'M0025', sysdate);		
+
+insert into drone values('D0001', '매빅2PRO', '매빅', 'mav_001', 'DJI', 'drone01.jpg', '관리자', sysdate, '관리자', sysdate);															
+insert into drone values('D0002', '매빅PRO', '매빅', 'mav_002', 'DJI', 'drone02.jpg', '관리자', sysdate, '관리자', sysdate);															
+insert into drone values('D0003', '팬텀4', '팬텀', 'pt4_001', 'DJI', 'drone03.jpg', '관리자', sysdate, '관리자', sysdate);															
+insert into drone values('D0004', '팬텀4PRO', '팬텀', 'pt4_002', 'DJI', 'drone04.jpg', '관리자', sysdate, '관리자', sysdate);															
+insert into drone values('D0005', '팬텀3어드밴스', '팬텀', 'pt3_001', 'DJI', 'drone05.jpg', '관리자', sysdate, '관리자', sysdate);															
+insert into drone values('D0006', '팬텀3프로페셔널', '팬텀', 'pt3_002', 'DJI', 'drone06.jpg', '관리자', sysdate, '관리자', sysdate);															
+insert into drone values('D0007', '미니스파크', '스파크', 'sp_001', 'DJI', 'drone07.jpg', '관리자', sysdate, '관리자', sysdate);															
+insert into drone values('D0008', '매빅2엔터프라이즈_유니버셜', '매빅', 'mav_003', 'DJI', 'drone08.jpg', '관리자', sysdate, '관리자', sysdate);															
+insert into drone values('D0009', '매빅2엔터프라이즈_듀얼', '매빅', 'mav_004', 'DJI', 'drone09.jpg', '관리자', sysdate, '관리자', sysdate);															
+insert into drone values('D0010', '매빅AIR', '매빅', 'mav_004', 'DJI', 'drone10.jpg', '관리자', sysdate, '관리자', sysdate);															
+insert into drone values('D0011', '인스파이어1V2_1인', '인스파이어', 'ins_001', 'DJI', 'drone11.jpg', '관리자', sysdate, '관리자', sysdate);															
+insert into drone values('D0012', '인스파이어1V2_2인', '인스파이어', 'ins_002', 'DJI', 'drone12.jpg', '관리자', sysdate, '관리자', sysdate);															
+insert into drone values('D0013', '인스파이어1PRO_1인', '인스파이어', 'ins_003', 'DJI', 'drone13.jpg', '관리자', sysdate, '관리자', sysdate);															
+insert into drone values('D0014', '인스파이어1PRO_2인', '인스파이어', 'ins_004', 'DJI', 'drone14.jpg', '관리자', sysdate, '관리자', sysdate);															
+insert into drone values('D0015', '인스파이어2_젠뮤즈X5S_1인', '인스파이어', 'ins_005', 'DJI', 'drone15.jpg', '관리자', sysdate, '관리자', sysdate);															
+insert into drone values('D0016', '인스파이어2_젠뮤즈X5S_2인', '인스파이어', 'ins_006', 'DJI', 'drone16.jpg', '관리자', sysdate, '관리자', sysdate);															
+insert into drone values('D0017', '비밥2싱글', '비밥', 'bb_001', 'PARROT', 'drone17.jpg', '관리자', sysdate, '관리자', sysdate);															
+insert into drone values('D0018', '비밥2+콘트롤러', '비밥', 'bb_002', 'PARROT', 'drone18.jpg', '관리자', sysdate, '관리자', sysdate);	
+
+insert into rental values('R0001', '파주점', '031-333-3333', '경기', '파주점', sysdate, '파주점', sysdate);											
+insert into rental values('R0002', '잠실점', '02-756-7777', '서울', '잠실점', sysdate, '잠실점', sysdate);											
+insert into rental values('R0003', '서귀포점', '064-012-3389', '제주', '서귀포점', sysdate, '서귀포점', sysdate);											
+insert into rental values('R0004', '해운대점', '051-500-5000', '부산', '해운대점', sysdate, '해운대점', sysdate);											
+insert into rental values('R0005', '둔산점', '042-710-9843', '대전', '둔산점', sysdate, '둔산점', sysdate);											
+insert into rental values('R0006', '강릉점', '033-243-1478', '강원', '강릉점', sysdate, '강릉점', sysdate);											
+insert into rental values('R0007', '부산점', '051-123-4567', '부산', '부산점', sysdate, '부산점', sysdate);											
+insert into rental values('R0008', '대구점', '053-987-6543', '대구', '대구점', sysdate, '대구점', sysdate);											
+insert into rental values('R0009', '울산점', '052-210-2100', '울산', '울산점', sysdate, '울산점', sysdate);											
+insert into rental values('R0010', '여수점', '061-121-2121', '여수', '여수점', sysdate, '여수점', sysdate);											
+insert into rental values('R0011', '목포점', '061-343-4343', '목포', '목포점', sysdate, '목포점', sysdate);											
+insert into rental values('R0012', '오산점', '031-565-6565', '경기', '오산점', sysdate, '오산점', sysdate);											
+insert into rental values('R0013', '속초점', '033-787-8787', '강원', '속초점', sysdate, '속초점', sysdate);											
+insert into rental values('R0014', '포항점', '054-990-9990', '포항', '포항점', sysdate, '포항점', sysdate);											
+insert into rental values('R0015', '김포점', '031-104-1004', '경기', '김포점', sysdate, '김포점', sysdate);			
+
+insert into possesion values('PS0001', null, 'D0001', 'R0001', 15, 100000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0002', null, 'D0002', 'R0002', 10, 200000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0003', null, 'D0003', 'R0004', 3, 100000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0004', null, 'D0004', 'R0006', 6, 150000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0005', null, 'D0005', 'R0015', 10, 250000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0006', null, 'D0006', 'R0004', 11, 300000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0007', null, 'D0007', 'R0008', 20, 100000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0008', null, 'D0008', 'R0006', 18, 150000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0009', null, 'D0009', 'R0001', 9, 200000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0010', null, 'D0010', 'R0008', 2, 250000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0011', null, 'D0011', 'R0004', 5, 200000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0012', null, 'D0012', 'R00013', 6, 150000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0013', null, 'D0013', 'R0001', 10, 100000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0014', null, 'D0014', 'R0003', 11, 100000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0015', null, 'D0015', 'R0012', 12, 150000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0016', null, 'D0016', 'R0004', 3, 150000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0017', null, 'D0017', 'R0006', 7, 100000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0018', null, 'D0018', 'R0001', 4, 100000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0019', 'PL0001', null,  null, 1, 200000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0020', 'PL0002', null,  null, 1, 100000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0021', 'PL0003', null,  null, 1, 200000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0022', 'PL0004', null, null, 1, 50000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0023', 'PL0005', null, null, 1, 80000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0024', 'PL0006', null, null, 1, 200000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0025', 'PL0007', null, null, 1, 100000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0026', 'PL0008', null, null, 1, 200000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0027', 'PL0009', null, null, 1, 100000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0028', 'PL0010', null, null, 1, 50000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0029', null, 'D0001', 'R0013', 16, 400000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0030', null, 'D0001', 'R0014', 14, 350000, '관리자', sysdate, '관리자', sysdate);												
+insert into possesion values('PS0031', null, 'D0007', 'R0015', 17, 200000, '관리자', sysdate, '관리자', sysdate);			
+
+insert into board values('B0001', 'M0004', '대여문의', '당일 대여 가능한가요', '1234', null, sysdate, 100, 'y', '문의', '문의', null, 1, 0, 0, '강감찬', sysdate, '강감찬', sysdate);																				
+insert into board values('B0002', 'M0013', '사진촬영', '서울 드론 비행 가능한 곳 알려주세요', '1234', null, sysdate, 105, 'y', '문의', '문의', null, 1, 0, 0, '김철수', sysdate, '김철수', sysdate);																				
+insert into board values('B0003', 'M0006', '교육용문의', '교육용 드론으로 좋은 것 추천해주세요', '1234', null, sysdate, 122, 'y', '문의', '문의', null, 1, 0, 0, '하춘화', sysdate, '하춘화', sysdate);																				
+insert into board values('B0004', 'M0011', '파일럿문의', '파일럿을 대여하고 싶습니다.', '1234', null, sysdate, 200, 'n', '문의', '문의', null, 1, 0, 0,  '김지현', sysdate, '김지현', sysdate);																				
+insert into board values('B0005', 'M0016', '지점위치', '경기도권 지점 위치 알려주세요', '1234', null, sysdate, 155, 'n', '문의', '문의', null, 1, 0, 0,  '이영자', sysdate, '이영자', sysdate);																				
+insert into board values('B0006', 'M0010', '후기', '좋습니다.', '1234', 5, sysdate, 187, null, '후기', '후기', null, 1, 0, 0,  '박보영', sysdate, '박보영', sysdate);																				
+insert into board values('B0007', 'M0019', '좋아요', '굿', '1234', 4, sysdate, 155, null, '후기', '후기', null, 1, 0, 0,  '우은희', sysdate, '우은희', sysdate);																				
+insert into board values('B0008', 'M0015', '서비스', '좋아요', '1234', 4, sysdate, 13, null, '후기', '후기', null, 1, 0, 0,  '조진웅', sysdate, '조진웅', sysdate);																				
+insert into board values('B0009', 'M0013', '좋습니다', '아주 좋아요', '1234', 5, sysdate, 150, null, '후기', '후기', null, 1, 0, 0,  '김철수', sysdate, '김철수', sysdate);																				
+insert into board values('B0010', 'M0003', '친절해요', '친절합니다.', '1234', 4, sysdate, 144, null, '후기', '후기', null, 1, 0, 0,  '유관순', sysdate, '유관순', sysdate);																				
+insert into board values('B0011', 'M0002', 'a/s 문의', '고장 날 경우 어떻게 해냐하나요', '1234', null, sysdate, 155, 'y', '문의', 'as', null, 1, 0, 0,  '이순신', sysdate, '이순신', sysdate);																				
+insert into board values('B0012', 'M0009', 'a/s 문의', '수리점이 어디에 있나요', '1234', null, sysdate, 156, 'y', '문의', 'as', null, 1, 0, 0,  '차승원', sysdate, '차승원', sysdate);																				
+insert into board values('B0013', 'M0008', '보험문의', '파손될 경우 보험처리 되나요', '1234', null, sysdate, 188, 'y' ,'문의', '문의', null, 1, 0, 0,  '임창정', sysdate, '임창정', sysdate);																				
+insert into board values('B0014', 'M0025', '공지사항', '공지사항입니다', '1234', null, sysdate, 254, null, '공지사항', '공지사항', null, 1, 0, 0,  '관리자', sysdate, '관리자', sysdate);		
+
+insert into basket values('BS0001','PS0001','M0004',1,100000,'2019/09/01','2019/09/03',sysdate);											
+insert into basket values('BS0002','PS0011','M0004',1,200000,'2019/09/01','2019/09/03',sysdate);											
+insert into basket values('BS0003','PS0017','M0010',2,200000,'2019/06/24','2019/06/25',sysdate);											
+insert into basket values('BS0004','PS0011','M0012',3,600000,'2019/01/23','2019/01/27',sysdate);											
+insert into basket values('BS0005','PS0011','M0014',1,100000,'2019/01/25','2019/01/28',sysdate);											
+insert into basket values('BS0006','PS0020','M0013',1,100000,'2019/04/04','2019/04/09',sysdate);											
+insert into basket values('BS0008','PS0029','M0022',1,100000,'2019/10/10','2019/10/12',sysdate);											
+insert into basket values('BS0009','PS0006','M0019',2,600000,'2019/02/25','2019/02/28',sysdate);											
+insert into basket values('BS0011','PS0022','M0001',1,500000,'2019/03/01','2019/03/05',sysdate);											
+insert into basket values('BS0012','PS0002','M0001',1,200000,'2019/03/01','2019/03/05',sysdate);											
+insert into basket values('BS0014','PS0006','M0006',1,300000,'2019/12/12','2019/12/12',sysdate);											
+insert into basket values('BS0015','PS0011','M0021',1,200000,'2019/01/05','2019/01/08',sysdate);											
+insert into basket values('BS0016','PS0001','M0005',1,100000,'2019/04/15','2019/04/20',sysdate);											
+insert into basket values('BS0017','PS0006','M0006',2,600000,'2019/04/15','2019/04/20',sysdate);											
+insert into basket values('BS0018','PS0002','M0007',1,200000,'2019/07/07','2019/07/09',sysdate);											
+insert into basket values('BS0019','PS0015','M0007',1,100000,'2019/07/07','2019/07/09',sysdate);											
+insert into basket values('BS0020','PS0011','M0008',1,200000,'2019/11/01','2019/11/05',sysdate);	
+
+insert into orders values('O0001','M0004',2,300000,15000,285000,sysdate,0);									
+insert into orders values('O0002','M0010',2,200000,10000,290000,sysdate,0);									
+insert into orders values('O0003','M0012',3,600000,30000,570000,sysdate,0);									
+insert into orders values('O0004','M0014',1,100000,5000,95000,sysdate,0);									
+insert into orders values('O0005','M0013',1,100000,5000,95000,sysdate,0);									
+insert into orders values('O0007','M0022',1,100000,5000,95000,sysdate,0);									
+insert into orders values('O0008','M0019',2,600000,30000,570000,sysdate,0);									
+insert into orders values('O0010','M0001',2,700000,35000,665000,sysdate,0);									
+insert into orders values('O0012','M0006',1,300000,15000,285000,sysdate,0);									
+insert into orders values('O0013','M0021',1,200000,10000,190000,sysdate,0);									
+insert into orders values('O0014','M0005',3,700000,35000,665000,sysdate,0);									
+insert into orders values('O0015','M0007',2,350000,17500,335000,sysdate,0);									
+insert into orders values('O0016','M0008',1,200000,10000,190000,sysdate,0);		
+	
+
+insert into ordersDetail values('DET0001', 'O0001', 'PS0001', 1, 95000, '2019/09/01', '2019/09/03',0);													
+insert into ordersDetail values('DET0002', 'O0001', 'PS0011', 1, 190000, '2019/09/01', '2019/09/03',1);													
+insert into ordersDetail values('DET0003', 'O0002', 'PS0017', 2, 190000, '2019/06/24', '2019/06/25', 2);													
+insert into ordersDetail values('DET0004', 'O0003', 'PS0011', 3, 570000, '2019/01/23', '2019/01/27', 3);													
+insert into ordersDetail values('DET0006', 'O0005', 'PS0020', 1, 95000, '2019/04/04', '2019/04/09', 0);													
+insert into ordersDetail values('DET0008', 'O0007', 'PS0029', 1, 95000, '2019/10/10', '2019/10/12', 0);													
+insert into ordersDetail values('DET0009', 'O0008', 'PS0006', 2, 570000, '2019/02/25', '2019/02/28', 1);													
+insert into ordersDetail values('DET0011', 'O0010', 'PS0022', 1, 475000, '2019/03/01', '2019/03/05', 1);													
+insert into ordersDetail values('DET0012', 'O0010', 'PS0002', 1, 190000, '2019/03/01', '2019/03/05', 1);													
+insert into ordersDetail values('DET0014', 'O0012', 'PS0006', 1, 285000, '2019/12/12', '2019/12/12', 2);													
+insert into ordersDetail values('DET0015', 'O0013', 'PS0011', 1, 190000, '2019/01/05', '2019/01/08', 0);													
+insert into ordersDetail values('DET0016', 'O0014', 'PS0001', 1, 95000, '2019/04/15', '2019/04/20', 0);													
+insert into ordersDetail values('DET0017', 'O0012', 'PS0006', 2, 570000, '2019/04/15', '2019/04/20', 3);													
+insert into ordersDetail values('DET0018', 'O0015', 'PS0002', 1, 190000, '2019/07/07', '2019/07/09', 1);													
+insert into ordersDetail values('DET0019', 'O0015', 'PS0015', 1, 142500, '2019/07/07', '2019/07/09', 2);													
+insert into ordersDetail values('DET0020', 'O0016', 'PS0011', 1, 190000, '2019/11/01', '2019/11/05', 1);		
+        
