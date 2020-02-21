@@ -1,0 +1,164 @@
+
+-- create
+
+
+
+CREATE TABLE member (				
+	mem_no 	varchar2(20) 	primary key,	
+	mem_lev 	number 		NOT NULL,
+	mem_id 	varchar2(20) 	unique 	NOT NULL,
+	mem_pwd 	varchar2(20) 		NOT NULL,
+	mem_pwd_check 	varchar2(20) 		NOT NULL,
+	mem_name 	varchar2(20) 		NOT NULL,
+	mem_birth 	date 		NOT NULL,
+	mem_gender 	varchar2(20) 		NOT NULL,
+	mem_tel 	varchar2(20) 		NOT NULL,
+	mem_email 	varchar2(20) 		NOT NULL,
+	mem_fname	varchar2(50) 		NOT NULL,
+	first 	varchar2(20) 		NOT NULL,
+	first_time 	date 		NOT NULL,
+	last 	varchar2(20) 		NOT NULL,
+	last_time 	date 		NOT NULL,
+   	mem_point number default 0
+);
+
+CREATE TABLE pilot (				
+	pil_no 	varchar2(20) 	primary key,	
+	mem_no 	varchar2(20) 		NOT NULL,
+	pil_ok 	varchar2(20) 		NOT NULL,
+	pil_portfolio 	varchar2(100) 		NULL,
+	pil_portphoto 	varchar2(50) 		NOT NULL,
+	pil_career 	varchar2(20) 		NOT NULL,
+	pil_drone 	varchar2(20) 		NOT NULL,
+	pil_category 	number 		NOT NULL,
+	pil_loc 	varchar2(20) 		NOT NULL,
+	first 	varchar2(20) 		NOT NULL,
+	first_time 	date 		NOT NULL,
+	last 	varchar2(20) 		NOT NULL,
+	last_time 	date 		NOT NULL
+);				
+				
+ALTER TABLE pilot ADD  ( FOREIGN KEY (mem_no) REFERENCES member ) ;
+	    
+CREATE TABLE drone (				
+	dro_no	varchar2(20)	primary key,	
+	dro_name	varchar2(50)		NOT NULL,
+	dro_series	varchar2(20)		NULL,
+	dro_series_no	varchar2(20)		NULL,
+	dro_made	varchar2(20)		NOT NULL,
+	dro_photo	varchar2(20)		NULL,
+	first	varchar2(20)		NOT NULL,
+	first_time	date		NOT NULL,
+	last	varchar2(20)		NOT NULL,
+	last_time	date		NOT NULL
+);
+
+CREATE TABLE rental (				
+	ren_no	varchar2(20)	primary key,	
+	ren_name	varchar2(20)		NOT NULL,
+	ren_tel	varchar2(20)		NOT NULL,
+	ren_loc	varchar2(20)		NOT NULL,
+	first	varchar2(20)		NOT NULL,
+	first_time	date		NOT NULL,
+	last	varchar2(20)		NOT NULL,
+	last_time	date		NOT NULL
+);	
+
+CREATE TABLE possesion (				
+	pos_no	varchar2(20)	primary key,	
+	pil_no	varchar2(20)		NULL,
+	dro_no	varchar2(20)		NULL,
+	ren_no	varchar2(20)		NULL,
+	pos_amount	number		NOT NULL,
+	pos_price	number		NULL,
+	first	varchar2(20)		NOT NULL,
+	first_time	date		NOT NULL,
+	last	varchar2(20)		NOT NULL,
+	last_time	date		NOT NULL
+);
+
+ALTER TABLE possesion			
+       ADD  ( FOREIGN KEY (pil_no)			
+                             REFERENCES pilot ) ;			
+			
+ALTER TABLE possesion			
+       ADD  ( FOREIGN KEY (dro_no)			
+                             REFERENCES drone ) ;			
+			
+ALTER TABLE possesion			
+       ADD  ( FOREIGN KEY (ren_no)			
+                             REFERENCES rental ) ;
+			     
+CREATE TABLE basket (				
+	bas_no 	varchar2(20) 	primary key,	
+	pos_no 	varchar2(20) 		NOT NULL,
+	mem_no 	varchar2(20) 		NOT NULL,
+	bas_amount 	number 		NOT NULL,
+	bas_price 	number 		NOT NULL,
+	bas_rental 	date 		NOT NULL,
+	bas_return 	date 		NOT NULL,
+	bas_time 	date 		NOT NULL
+);	
+
+ALTER TABLE basket			
+       ADD  ( FOREIGN KEY (mem_no)			
+                             REFERENCES member ) ;			
+			
+ALTER TABLE basket			
+       ADD  ( FOREIGN KEY (pos_no)			
+                             REFERENCES possesion ) ;	
+			     
+CREATE TABLE orders (				
+	ord_no 	varchar2(20) 	primary key,	
+	mem_no 	varchar2(20) 		NOT NULL,
+	ord_amount 	number 		NOT NULL,
+	ord_price 	number 		NOT NULL,
+	ord_sale 	number 		NULL,
+	ord_fin_price	number 		NOT NULL,
+	ord_date	date		NOT NULL,
+	ord_pay_state	number(1)		NOT NULL
+				
+);	
+
+ALTER TABLE basket			
+       ADD  ( FOREIGN KEY (mem_no)			
+                             REFERENCES member ) ;			
+			
+ALTER TABLE basket			
+       ADD  ( FOREIGN KEY (pos_no)			
+                             REFERENCES possesion ) ;	
+			     
+CREATE TABLE orders (				
+	ord_no 	varchar2(20) 	primary key,	
+	mem_no 	varchar2(20) 		NOT NULL,
+	ord_amount 	number 		NOT NULL,
+	ord_price 	number 		NOT NULL,
+	ord_sale 	number 		NULL,
+	ord_fin_price	number 		NOT NULL,
+	ord_date	date		NOT NULL,
+	ord_pay_state	number(1)		NOT NULL
+				
+);	
+
+ALTER TABLE orders			
+       ADD  ( FOREIGN KEY (mem_no)			
+                             REFERENCES member ) ;		
+
+CREATE TABLE ordersDetail (				
+	det_no 	varchar2(20) 	primary key,	
+	ord_no 	varchar2(20) 		NOT NULL,
+	pos_no 	varchar2(20) 		NOT NULL,
+	det_amount 	number 		NOT NULL,
+	det_price 	number 		NOT NULL,
+	det_rental 	date 		NOT NULL,
+	det_return 	date 		NOT NULL
+);				
+
+ALTER TABLE ordersDetail			
+       ADD  ( FOREIGN KEY (ord_no)			
+                             REFERENCES orders ) ;			
+			
+ALTER TABLE ordersDetail			
+       ADD  ( FOREIGN KEY (pos_no)			
+                             REFERENCES possesion ) ;			
+     
