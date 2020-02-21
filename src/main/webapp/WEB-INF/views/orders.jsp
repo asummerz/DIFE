@@ -24,19 +24,17 @@
 	$(function() {
 		//로그인 로그아웃 전환
 		var mem_id = "${mem_id}";
-		if (mem_id != '' && mem_id != null) {
-			//var login = $("#category-2").find("a:first").html();
-			//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
-			//$("#category-2").append(logout);
-			$("#sign").attr("href", "logout").html("LOGOUT");
+		if(mem_id != '' && mem_id != null){
+			$("#sign").attr("href","logout").html("LOGOUT");
+			$("#mypage").show();
 		}
-		if (mem_id == '' || mem_id == null) {
-			//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
-			//$("#category-2").append(login);
-			$("#sign").attr("href", "signIn").html("LOGIN");
+
+		if(mem_id == '' || mem_id == null){
+			$("#sign").attr("href","signIn").html("LOGIN");
+			$("#mypage").hide();
 		}
 		//로그인 로그아웃 end
-		
+
 		//마이페이지 이동
 		$("#mypage").click(function(){
 			console.log("클릭");
@@ -71,12 +69,14 @@
 		}
 		/*총금액 처리를 위한 변수  */
    	 	var sum= 0;
-		var ord_no;
+		var ord_no='';
 	 	var mem_point= 0;
 	 	var reserve_fund=0;
+	 	var list_count=0;
 		/*list를 처리하는 function*/
         function getList(){ 
         	$.ajax({url:"/ordersDetailList.do",async : false,data:{"mem_id":mem_id},dataType:"json",success:function(data){
+        		
      			$("#table_content").empty();
      			if(mem_id == '' || mem_id == null){
      				var result = confirm("로그인이 필요합니다.");
@@ -88,16 +88,14 @@
     			}
      			var i = 1;
 	    		$.each(data,function(idx,item){
-	    			
 	    			var rental = new Date(item.det_rental);
 	    			var re_date = new Date(item.det_return);
 	    			var ord_date = new Date(item.ord_date);
 	    			var ord_no_str = orders_date(ord_date)+"";
 	    			 ord_no_str +="P0000"+i;
-	    			if(idx == 1)
+	    			if(idx === 0)
 	    				{
 	    					ord_no =  item.ord_no;
-	    					alert(ord_no+sum);
 	    					mem_point = Number(item.mem_point);
 	    				}
 	    			tr=$("<tr></tr>");
@@ -123,7 +121,7 @@
 	    			if(item.dro_name !== null)
 	    				{
 	    					
-	    					product_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
+	    					product_img=$("<img/>").attr({"src":"img/drone/"+item.dro_photo,"width":"62","height":"68"});
 	    					$(td2).append(product_img);
 	    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series);
 	    					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date);
@@ -162,6 +160,7 @@
 	    			$(tr).append(td1,td2,td3,td4,td5,td6);
 	    			$("#table_content").append(tr);
 	    			i++;
+	    			list_count++;
 	    			}); 
 	    		/* foreach종료 */
 	    	}})
@@ -177,14 +176,8 @@
 		   	 		 $("#agree_select").html("동의를 확인해주세요.");
 		   	         if(chk) {
 		   	        	$("#agree_select").hide();
-		   	        	
-		   	        	$("#orderCancle").click(function(){
-		   	        		  $.ajax({url:"/delJumun.do",data:{"ord_no":ord_no,"mem_id":mem_id},success:function(data){
-		   	        				 alert("ajax작동");
-		   	        		 }}); 
-		   	        		
-		   					   
-		   				});
+		   	        
+		   	     
 		   	        	
 		   	        	$("#order").click(function(){
 		   	        		/* 결제페이지로 sum값 전달 */
@@ -202,14 +195,21 @@
 		   	         else {
 		   	        	$("#agree_select").show(); 	
 		   	         }
-			//주문취소 클릭시
-			$("#orderCancle").click(function(){
-				
 			})
-		
+			//orderscancle
+			$("#orderCancle").click(function(){
+				alert(ord_no)
+				 $.ajax({url:"/delJumun.do",data:{"mem_id":mem_id,"ord_no":ord_no,"list_count":list_count},success:function(data){
+					if(data=="1")
+						{
+							location.href("/main");
+						}
+				
+				}}); 
+			})
    	 	});
-			/*check end  */
-	});	
+			/*function  */
+
 		
     			
      		
@@ -230,8 +230,11 @@
     <div id="contents">
         <!-- 세션 영역        -->
         <div id="content-session">
+        	<div id="title">
+                <img src="img/main/drone_main10.PNG" id="support-title-img">
+            </div>
+            <div id="orders-title">주문하기</div>
             <div class="container">
-               <div class="container-top">주문</div>
                 <div class='main-session'>
                   
                 <!--테이블 영역      -->

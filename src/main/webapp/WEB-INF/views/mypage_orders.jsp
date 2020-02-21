@@ -1,4 +1,3 @@
-<<<<<<< Upstream, based on origin/master
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,18 +22,15 @@
     $(function(){
     	//로그인 로그아웃 전환
     	var mem_id = "${mem_id}";
+		if(mem_id != '' && mem_id != null){
+			$("#sign").attr("href","logout").html("LOGOUT");
+			$("#mypage").show();
+		}
 
-    	if(mem_id != '' && mem_id != null){
-    		//var login = $("#category-2").find("a:first").html();
-    		//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
-    		//$("#category-2").append(logout);
-    		$("#sign").attr("href","logout").html("LOGOUT");
-    	}
-    	if(mem_id == '' || mem_id == null){
-    		//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
-    		//$("#category-2").append(login);
-    		$("#sign").attr("href","signIn").html("LOGIN");
-    	}
+		if(mem_id == '' || mem_id == null){
+			$("#sign").attr("href","signIn").html("LOGIN");
+			$("#mypage").hide();
+		}
 
     	/* 날자를 리스트 보여주기위해 포맷하기위한 function */
     	function date_to_str(format)
@@ -46,8 +42,6 @@
 		    if(date<10) date = '0' + date;
 		    return year + "." + month + "." + date;
 		}
-    	
-
     	
     	//마이페이지 이동
 		$("#mypage").click(function(){
@@ -127,7 +121,6 @@
 			console.log(typeof(month)) */
 			return false
 		})
-
     })
     </script>
 </head>
@@ -142,7 +135,6 @@
             <div class="container">
                <div  class="mypage-grid">
                 <jsp:include page="mypage.jsp"></jsp:include>
-                
                 <div id="mypage-bottom" class="mypage-grid-nav">
                     <div id="mypage-bottom-left">
                         <nav>
@@ -197,9 +189,5 @@
          <jsp:include page="footer.jsp"></jsp:include>
         <!-- //footer -->
     </div>
-
 </body>
-
-
-
 </html>

@@ -37,7 +37,7 @@
     }
 }
 
-@media (min-width:376px){
+@media (min-width:1200px){
     /*헤더 고정(sticky header)*/
     .sticky {
       position: fixed;
@@ -61,7 +61,7 @@
         width: 100px;
         height: auto;
         float: left;
-        margin: 20px 0px;
+        margin: 15px 0px;
     }
     
     #category-1{
@@ -89,7 +89,10 @@
         text-shadow: 0 0 1px rgba(255,255,255,0.3);
         padding: 0px 13px;
     }
-    
+    svg{
+		width: 40px;
+		height: 40px;
+	}
     
     /*상단 버튼 효과*/
     .cl-effect-1::before,
@@ -139,14 +142,14 @@
 
     /* 하단 */
     #footer_info1{
-        font-size: 11px;
+        font-size: 11px !important;
         color: #a4a4a4;
     }
     #footer_info1 > p{
     	margin: 0 auto !important; 
     }
     #footer_info1 > p > a{
-        color: #a4a4a4;
+        color: #a4a4a4 !important;
     }
 
 }

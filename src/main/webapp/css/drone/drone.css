@@ -2,76 +2,6 @@
 #header{
     height: 120px;
 }
-
-#header-nav{
-    height: 50px;
-    line-height: 50px;
-    background-color: #383A3F;
-    vertical-align: middle;
-}
-
-svg{
-	padding-left: 10px;
-}
-/* 달력 */
-#block{
-    color: white;
-    height: 180px;
-    text-align: end;
-}
-#datepicker{
-    width: 150px;
-    height: 25px;
-}
-
-/* 검색 */
-.search{
-    font-size: 15px;
-    display: inline-flex;
-    list-style: none;
-    color: white;
-    padding: 0px 10px;
-}
-#calendar,.search1{
-    padding: 0px 10px;
-    font-size: 16px;
-}
-#btnSch{
-    width: 120px;
-    padding: 5px;
-    font-size: 17px;
-    font-weight: 700;
-    margin-top: 7px;
-}
-
-.search li{
-    width: 180px;
-}
-.search  .fa{
-    margin-left: 10px;
-    margin-top: 4px;
-}
-.sub-menu-1{
-    display: none;
-}
-.sub-menu-2 li{
-    font-size: 13px;
-}
-
-ul li:hover .sub-menu-1 {
-    display: block;
-    position: absolute;
-    background-color: white;
-    margin-top: 0px;
-    margin-left: 0px;
-    z-index: 9999;
-    padding: 0px 10px;
-}
-ul li:hover .sub-menu-1 ul{
-    display: block;@charset "UTF-8";
-#header{
-    height: 120px;
-}
 #header-nav{
     height: 50px;
     line-height: 50px;
@@ -102,7 +32,7 @@ svg{
     padding: 0px 10px;
 }
 #calendar,.search1{
-    padding: 0px 10px;
+    padding: 0px 20px;
     font-size: 16px;
 }
 #btnSch{
@@ -111,27 +41,38 @@ svg{
     font-size: 17px;
     font-weight: 700;
     margin-top: 7px;
+    border-radius: 30px;
 }
-.search li{
-    width: 180px;
+.search select {
+    width: 200px;
+    height: 30px;
 }
 .search  .fa{
     margin-left: 10px;
+    margin-right: 10px;
     margin-top: 4px;
 }
+#drone-nav {
+	margin-left: 0px;
+	margin-right: 40px;
+}
+/*
 .sub-menu-1{
     display: none;
 }
 .sub-menu-2 li{
     font-size: 13px;
 }
+*/
 .search1 {
 	cursor: pointer;
 }
+/*
 ul li:hover .sub-menu-1 {
     display: block;
     position: absolute;
     background-color: white;
+    border-radius: 10px;
     margin-top: 0px;
     margin-left: 0px;
     z-index: 9999;
@@ -154,228 +95,46 @@ ul li:hover .sub-menu-1 ul li:hover{
     font-weight: bold;
     background-color: #FFF9C4;
     -moz-border-radius: 10px; /* 모서리 둥글게 */  
-	-webkit-border-radius: 10px; /* 모서리 둥글게 */  
-/*  text-shadow: 0 0 5px #40C4FF, 0 0 5px #40C4FF, 0 0 5px #40C4FF, 0 0 5px #40C4FF;
-    text-shadow: 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4;	*/
+/*	-webkit-border-radius: 10px; /* 모서리 둥글게 */  
+/*    text-shadow: 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4;
 }
-.fas fa-angle-right{
-    float: right;
-}
-.sub-menu-2{
-    display: none;
-    color: white;
-    padding: 0px 10px;
-}
-.hover-dro:hover .sub-menu-2{
-    position: absolute;
-    display: block;
-    margin-top: -55px;
-    margin-left: 210px;
-    background-color: white;
-}
-.sub-menu-2 ul li:hover{
-    /*background-color: #03A9F4;*/
-    border-radius: 7px;
-}
-
-/* 컨테이너 */
-.container{
-    width: auto;
-    max-width: 1300px;
-    margin: 0 auto;
-    height: auto;
-}
-/* 상품이미지 */
-#drone-grid{
-	display: grid;
-	grid-template-columns: repeat(4,1fr);
-	/* grid-template-rows: 400px 400px 400px 400px; */
-    padding: 60px 10px 40px 10px;
-}
-
-/* 상품이미지 */
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
-/*간격 조정은 이거로 하시면 되요!*/
-.block{
-	margin-bottom: 50px;
-}
-figure.block {
-  font-family: 'Raleway', Arial, sans-serif;
-  position: relative;
-  overflow: hidden;
-  margin-left: 10px;
-  margin-bottom: 50px;
-  min-width: 220px;
-  max-width: 300px;
-  max-height: 450px;
-  width: 100%;
-  /*최대한 살리려고 했는데 background색 때문에 부득이하게 조금 변경된 부분이 있습니다.*/
-    background-color:#000;
-    background-clip: padding-box;
-  color: #fff;
-  text-align: center;
-  box-shadow: 0 0 px rgba(0, 0, 0, 0.15);
-  font-size: 16px;
-  padding-bottom: 10px;
-}
-figure.block * {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-transition: all 0.45s ease-in-out;
-  transition: all 0.45s ease-in-out;
-}
-figure.block img {
-  max-width: 100%;
-  position: relative;
-  opacity: 0.9;
-}
-#contents .block {
-	width: 300px;
-	height: 420px;
-	padding-bottom: 0px;
-}
-
-figure.block figcaption {
-  position: absolute;
-  top: 45%;
-  left: 7%;
-  right: 7%;
-  bottom: 45%;
-  border: 1px solid white;
-  border-width: 1px 1px 0;
-}
-figure.block .heading {
-  overflow: hidden;
-  -webkit-transform: translateY(50%);
-  transform: translateY(50%);
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-figure.block h2 {
-  display: table;
-  margin: 0 auto;
-  padding: 0 10px;
-  position: relative;
-  text-align: center;
-  width: auto;
-  text-transform: uppercase;
-  font-weight: 400;
-}
-figure.block h2 span {
-  font-weight: 800;
-}
-figure.block h2:before,
-figure.block h2:after {
-  position: absolute;
-  display: block;
-  width: 1000%;
-  height: 1px;
-  content: '';
-  background: white;
-  top: 50%;
-}
-figure.block h2:before {
-  left: -1000%;
-}
-figure.block h2:after {
-  right: -1000%;
-}
-figure.block p {
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  position: absolute;
-  width: 100%;
-  padding: 0 20px;
-  margin: 0;
-  opacity: 0;
-  line-height: 1.6em;
-  font-size: 0.9em;
-}
-figure.block a {
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  position: absolute;
-  z-index: 1;
-  margin: 5px;
-}
-figure.block:hover img,
-figure.block.hover img {
-  opacity: 0.25;
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-}
-figure.block:hover figcaption,
-figure.block.hover figcaption {
-  top: 7%;
-  bottom: 7%;
-}
-figure.block:hover p,
-figure.block.hover p {
-  opacity: 1;
-  -webkit-transition-delay: 0.35s;
-  transition-delay: 0.35s;
-}
-figcaption p span{
-    font-weight: bold;
-}
-#dro-md{
-	font-weight: normal;
-	font-size: 17px;
-}
-.block img{
-    width: 300px;
-    height: 420px;
-}
-
-/* 페이징처리 */
-.btnPaging{
-    padding: 10px;
-}
-.btnPaging li {
-    text-align: center;    
-}
-
-/* 드론 비교하는건 여기서 설정하시면 됩니다. */
-#footer-nav{
-	
-}
-    margin: 5px;
-}
-ul li:hover .sub-menu-1 ul li{
+*/
+#dro-search > select{
     width: 200px;
-    border-bottom: 0.5px dotted #383A3F;
-    text-align: left;
+    height: 30px;
+    font-size: 15px;
+    margin: 0px 20px 0px 20px;
 }
-ul li:hover .sub-menu-1 ul li:last-child{
-    border-bottom: none;
-}
-ul li:hover .sub-menu-1 ul li:hover{
-    color: #fff;   
-    /* background-color: #FFD54F; */ 
-    text-shadow: 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4;
-}
-.fas fa-angle-right{
+.fas fa-angle-right {
     float: right;
 }
-.sub-menu-2{
+/*
+.fas fa-angle-right:hover {
+    margin-top: 20px;
+	color: #383A3F; */
+/*	-webkit-transform:scale(1.5); /* Safari and Chrome */
+/*  	-moz-transform:scale(1.5); /* Firefox */
+/*  	-ms-transform:scale(1.5); /* IE 9 */
+/*  	-o-transform:scale(1.5); /* Opera */
+/*   	transform:scale(1.5);	/* 1.5배 사이즈 증가 */
+/*
+.sub-menu-2 {
     display: none;
     color: white;
     padding: 0px 10px;
 }
-.hover-dro:hover .sub-menu-2{
+.hover-dro:hover .sub-menu-2 {
     position: absolute;
     display: block;
     margin-top: -55px;
     margin-left: 210px;
     background-color: white;
 }
-.sub-menu-2 ul li:hover{
-    /*background-color: #03A9F4;*/
-    border-radius: 7px;
+*/
+input {
+	border: none;
+	border-radius: 30px;
+	text-align: center;	/* input 문자열 중앙정렬 */
 }
 
 /* 컨테이너 */
@@ -385,19 +144,18 @@ ul li:hover .sub-menu-1 ul li:hover{
     margin: 0 auto;
     height: auto;
 }
-/* 상품이미지 */
-#drone-grid{
-	display: grid;
-	grid-template-columns: repeat(4,1fr);
-	/* grid-template-rows: 400px 400px 400px 400px; */
-    padding: 60px 10px 40px 10px;
-}
 
 /* 상품이미지 */
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
 /*간격 조정은 이거로 하시면 되요!*/
 .block{
 	margin-bottom: 50px;
+}
+#drone-grid{
+	display: grid;
+	grid-template-columns: repeat(4,1fr);
+	/* grid-template-rows: 400px 400px 400px 400px; */
+    padding: 60px 10px 40px 10px;
 }
 figure.block {
   font-family: 'Raleway', Arial, sans-serif;
@@ -531,19 +289,201 @@ figcaption p span{
     height: 420px;
 }
 /*
-fas fa-won-sign{
-	font-size: 5px;
+.fa-won-sign fa-w-18 {
+	font-size: 20px;
 }
 */
-/* 페이징처리 */
-.btnPaging{
-    padding: 10px;
-}
-.btnPaging li {
-    text-align: center;    
-}
 
 /* 드론 비교하는건 여기서 설정하시면 됩니다. */
-#footer-nav{
-	
+#chat-circle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 180px;
+  height: 140px;
+  color: white;
+  cursor: pointer;
+  filter: drop-shadow(10px 10px 5px #383A3F);
+}
+.btn#my-btn {
+     background: white;
+    padding-top: 13px;
+    padding-bottom: 12px;
+    border-radius: 45px;
+    padding-right: 40px;
+    padding-left: 40px;
+    color: #5865C3;
+}
+#chat-overlay {
+    background: rgba(255,255,255,0.1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: none;
+}
+.chat-box {
+  display:none;
+  background: #efefef;
+  position:fixed;
+  right:30px;
+  bottom:50px;  
+  width:350px;
+  max-width: 85vw;
+  max-height:100vh;
+  border-radius:5px;  
+/*   box-shadow: 0px 5px 35px 9px #464a92; */
+  box-shadow: 0px 5px 35px 9px #ccc;
+}
+.chat-box-toggle {
+  float:right;
+  margin-right:15px;
+  cursor:pointer;
+}
+.chat-box-header {
+  background: #7EBDC2;
+  height:70px;
+  border-top-left-radius:5px;
+  border-top-right-radius:5px; 
+  color:white;
+  text-align:center;
+  font-size:20px;
+  padding-top:17px;
+}
+.chat-box-body {
+  position: relative;  
+  height:370px;  
+  height:auto;
+  border:1px solid #ccc;  
+  overflow: hidden;
+}
+.chat-box-body:after {
+  content: "";
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAgOCkiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PGNpcmNsZSBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS4yNSIgY3g9IjE3NiIgY3k9IjEyIiByPSI0Ii8+PHBhdGggZD0iTTIwLjUuNWwyMyAxMW0tMjkgODRsLTMuNzkgMTAuMzc3TTI3LjAzNyAxMzEuNGw1Ljg5OCAyLjIwMy0zLjQ2IDUuOTQ3IDYuMDcyIDIuMzkyLTMuOTMzIDUuNzU4bTEyOC43MzMgMzUuMzdsLjY5My05LjMxNiAxMC4yOTIuMDUyLjQxNi05LjIyMiA5LjI3NC4zMzJNLjUgNDguNXM2LjEzMSA2LjQxMyA2Ljg0NyAxNC44MDVjLjcxNSA4LjM5My0yLjUyIDE0LjgwNi0yLjUyIDE0LjgwNk0xMjQuNTU1IDkwcy03LjQ0NCAwLTEzLjY3IDYuMTkyYy02LjIyNyA2LjE5Mi00LjgzOCAxMi4wMTItNC44MzggMTIuMDEybTIuMjQgNjguNjI2cy00LjAyNi05LjAyNS0xOC4xNDUtOS4wMjUtMTguMTQ1IDUuNy0xOC4xNDUgNS43IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS4yNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTg1LjcxNiAzNi4xNDZsNS4yNDMtOS41MjFoMTEuMDkzbDUuNDE2IDkuNTIxLTUuNDEgOS4xODVIOTAuOTUzbC01LjIzNy05LjE4NXptNjMuOTA5IDE1LjQ3OWgxMC43NXYxMC43NWgtMTAuNzV6IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS4yNSIvPjxjaXJjbGUgZmlsbD0iIzAwMCIgY3g9IjcxLjUiIGN5PSI3LjUiIHI9IjEuNSIvPjxjaXJjbGUgZmlsbD0iIzAwMCIgY3g9IjE3MC41IiBjeT0iOTUuNSIgcj0iMS41Ii8+PGNpcmNsZSBmaWxsPSIjMDAwIiBjeD0iODEuNSIgY3k9IjEzNC41IiByPSIxLjUiLz48Y2lyY2xlIGZpbGw9IiMwMDAiIGN4PSIxMy41IiBjeT0iMjMuNSIgcj0iMS41Ii8+PHBhdGggZmlsbD0iIzAwMCIgZD0iTTkzIDcxaDN2M2gtM3ptMzMgODRoM3YzaC0zem0tODUgMThoM3YzaC0zeiIvPjxwYXRoIGQ9Ik0zOS4zODQgNTEuMTIybDUuNzU4LTQuNDU0IDYuNDUzIDQuMjA1LTIuMjk0IDcuMzYzaC03Ljc5bC0yLjEyNy03LjExNHpNMTMwLjE5NSA0LjAzbDEzLjgzIDUuMDYyLTEwLjA5IDcuMDQ4LTMuNzQtMTIuMTF6bS04MyA5NWwxNC44MyA1LjQyOS0xMC44MiA3LjU1Ny00LjAxLTEyLjk4N3pNNS4yMTMgMTYxLjQ5NWwxMS4zMjggMjAuODk3TDIuMjY1IDE4MGwyLjk0OC0xOC41MDV6IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS4yNSIvPjxwYXRoIGQ9Ik0xNDkuMDUgMTI3LjQ2OHMtLjUxIDIuMTgzLjk5NSAzLjM2NmMxLjU2IDEuMjI2IDguNjQyLTEuODk1IDMuOTY3LTcuNzg1LTIuMzY3LTIuNDc3LTYuNS0zLjIyNi05LjMzIDAtNS4yMDggNS45MzYgMCAxNy41MSAxMS42MSAxMy43MyAxMi40NTgtNi4yNTcgNS42MzMtMjEuNjU2LTUuMDczLTIyLjY1NC02LjYwMi0uNjA2LTE0LjA0MyAxLjc1Ni0xNi4xNTcgMTAuMjY4LTEuNzE4IDYuOTIgMS41ODQgMTcuMzg3IDEyLjQ1IDIwLjQ3NiAxMC44NjYgMy4wOSAxOS4zMzEtNC4zMSAxOS4zMzEtNC4zMSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuMjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvZz48L3N2Zz4=');
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height:100%;
+  position: absolute;
+  z-index: -1;   
+}
+#chat-input {
+  background: #f4f7f9;
+  width:330px; 
+  position:relative;
+  height:47px;  
+  padding-top:10px;
+  padding-right:10px;
+  padding-bottom:10px;
+  padding-left:10px;
+  border:none;
+  resize:none;
+  outline:none;
+  border:1px solid #ccc;
+  color:#888;
+  border-top:none;
+  border-bottom-right-radius:5px;
+  border-bottom-left-radius:5px;
+  overflow:hidden;  
+  border-radius: 0;
+}
+.chat-input > form {
+    margin-bottom: 0;
+}
+#chat-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #ccc;
+}
+#chat-input::-moz-placeholder { /* Firefox 19+ */
+  color: #ccc;
+}
+#chat-input:-ms-input-placeholder { /* IE 10+ */
+  color: #ccc;
+}
+#chat-input:-moz-placeholder { /* Firefox 18- */
+  color: #ccc;
+}
+.chat-submit {  
+  position:absolute;
+  bottom:3px;
+  right:10px;
+  background: transparent;
+  box-shadow:none;
+  border:none;
+  border-radius:50%;
+  color:#7EBDC2;
+  width:35px;
+  height:35px;  
+}
+.chat-logs {
+  padding:15px; 
+  height:370px;
+  overflow-y:scroll;
+}
+.chat-logs::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+.chat-logs::-webkit-scrollbar
+{
+	width: 5px;  
+	background-color: #F5F5F5;
+}
+.chat-logs::-webkit-scrollbar-thumb
+{
+	background-color: #7EBDC2;
+}
+
+@media only screen and (max-width: 500px) {
+   .chat-logs {
+        height:40vh;
+    }
+}
+
+.chat-msg.user > .msg-avatar img {
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  float:left;
+  width:15%;
+}
+.chat-msg.self > .msg-avatar img {
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  float:right;
+  width:15%;
+}
+.cm-msg-text {
+  background:white;
+  padding:10px 15px 10px 15px;  
+  color:#666;
+  max-width:75%;
+  float:left;
+  margin-left:10px; 
+  position:relative;
+  margin-bottom:20px;
+  border-radius:30px;
+}
+.chat-msg {
+  clear:both;    
+}
+.chat-msg.self > .cm-msg-text {  
+  float:right;
+  margin-right:10px;
+  background: #7EBDC2;
+  color:white;
+}
+.cm-msg-button>ul>li {
+  list-style:none;
+  float:left;
+  width:50%;
+}
+.cm-msg-button {
+    clear: both;
+    margin-bottom: 70px;
 }

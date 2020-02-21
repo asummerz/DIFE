@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,10 +9,7 @@
 	content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
 <title>layout</title>
 <!-- 웹폰트 -->
- <!-- 
-    <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
-     -->
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <!-- fadeIn -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
@@ -25,6 +23,31 @@
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script type="text/javascript">
 $(function(){
+	//로그인 로그아웃 전환
+	var mem_id = "${mem_id}";
+	if(mem_id != '' && mem_id != null){
+		$("#sign").attr("href","logout").html("LOGOUT");
+		$("#mypage").show();
+	}
+
+	if(mem_id == '' || mem_id == null){
+		$("#sign").attr("href","signIn").html("LOGIN");
+		$("#mypage").hide();
+	}
+	
+	//마이페이지 이동
+	$("#mypage").click(function(){
+		console.log("클릭");
+		//var mem_id = "${mem_id}";
+		if(mem_id == null || mem_id == ''){
+			alert("로그인을 해주세요.");
+			location.href="signIn";
+		}else{
+			$("#mypage").attr("href","mypage_orders");
+		}
+	})
+	
+	
 	//모든 공백 체크 정규식
 	var empJ = /\s/g;
 	//아이디 정규식
@@ -66,7 +89,7 @@ $(function(){
 					else {
 						if(idJ.test(mem_id)) {
 							$("#id_check").text("사용가능한 아이디 입니다.");
-							$("#id_check").css("color", "white");
+							$("#id_check").css("color", "#7EBDC2");
 							$("#signup").attr("disabled", false);
 						}
 						else if(mem_id=="") {
@@ -76,7 +99,7 @@ $(function(){
 						}
 						else {
 							$("#id_check").text("아이디는 소문자와 숫자 4~12자리만 가능합니다.");
-							$("#id_check").css("color", red);
+							$("#id_check").css("color", "red");
 							$("#signup").attr("disabled", true);
 						}
 					}
@@ -295,9 +318,9 @@ $(function(){
 		
 	var authNumber;
 	$("#sendAuth").click(function(){
-		var data = {tel:$("#mem_tel").val()};
-		$.post("sendAuthNumber", data, function(data){
-			authNumber = data;
+		var data = {mem_tel:$("#mem_tel").val()};
+		$.post("sendAuthNumber", data, function(r){
+			authNumber = r;
 		});
 	});
 	$("#btnAuth").click(function(){
@@ -323,31 +346,14 @@ $(function(){
 			return true;
 	});
 });
+
 </script>
 </head>
 <body>
 	<div id="wrap" class="animated fadeIn">
+
 		<!-- header -->
-		<div id="header">
-			<div id="header-top">
-				<div id="category">
-					<span id="category-1" class="animated fadeInUp"> 
-					    <a href="main"><img src="img/logo/logo_white.png" id="logo"></a> 
-						<a href="#" class="cl-effect-1">드론</a> 
-						<a href="pilot" class="cl-effect-1">파일럿</a> 
-						<a href="#" class="cl-effect-1">지역 및 날씨</a> 
-						<a href="#" class="cl-effect-1">고객지원</a>
-						<a href="#" class="cl-effect-1">커뮤니티</a>
-					</span> 
-					<span id="category-2" class="animated fadeInUp"> 
-					    <a href="signIn" class="cl-effect-1">LOGIN</a> 
-						<a href="#" class="cl-effect-1">MYPAGE</a> 
-						<a href="#" class="cl-effect-1">RESERVATION</a>
-					</span>
-				</div>
-			</div>
-			<div id="header-nav"></div>
-		</div>
+		 <jsp:include page="header.jsp"></jsp:include>
 		<!-- //header -->
 
 		<!-- contents -->
@@ -358,10 +364,10 @@ $(function(){
 						<div class="col-md-8">
 							<section>
 								<h1 class="entry-title">
-									<span style="color: white">회원가입</span>
+									<span>회원가입</span>
 								</h1>
 								
-								<form action="signUp.do" class="form-horizontal" method="post" id="signup" enctype="multipart/form-data" role="form">
+								<form action="signUp" class="form-horizontal" method="post" id="signup" enctype="multipart/form-data" role="form">
 									<div class="form-group">
 										<label class="control-label col-sm-3">이메일 
 											<span class="text-danger">*</span>
@@ -421,10 +427,10 @@ $(function(){
 											<span class="text-danger">*</span>
 										</label>
 										<div class="col-md-3 col-sm-3" id="gender">
-											<label style="color: white; padding-right: 10px;"> 
+											<label style="padding-right: 10px;"> 
 											    <input name="mem_gender" type="radio" value="Male"> 남성
 											</label>     
-											<label style="color: white;">
+											<label>
 												<input name="mem_gender" type="radio" value="Female"> 여성
 											</label>
 										</div>
@@ -434,7 +440,7 @@ $(function(){
 											<span class="text-danger">*</span>
 										</label>
 										<div class="col-md-5 col-sm-8">
-											<input type="text" class="form-control" name="mem_tel" id="mem_tel" placeholder="'-'제외" required="required">
+											<input type="tel" class="form-control" name="mem_tel" id="mem_tel" placeholder="'-'제외" required="required">
 											<button id="sendAuth" type="button">인증번호 전송</button>
 											<div class="check_font" id="tel_check"></div>
 											
@@ -474,33 +480,10 @@ $(function(){
 		<!-- //contents -->
 
 		<!-- footer -->
-        <div id="footer">
-            <div id="footer-nav">footer-nav</div>
-            <div id="footer-info">(주)비트캠프:DIFE
-                <div id="footer_info1">
-                    <p>서울특별시 마포구 백범로 23 구프라자 3층</p>
-                    <p>02-707-1480</p>
-                    <p><a href="#">고객센터</a></p>
-                    <p><a href="#">이용안내</a></p>
-                </div>
-            </div>
-        </div>
+         <jsp:include page="footer.jsp"></jsp:include>
         <!-- //footer -->
 	</div>
-	<script>
-		window.onscroll = function() {
-			myFunction()
-		};
-		var header = document.getElementById("header");
-		var sticky = header.offsetTop;
-		function myFunction() {
-			if (window.pageYOffset > sticky) {
-				header.classList.add("sticky");
-			} else {
-				header.classList.remove("sticky");
-			}
-		}
-	</script>
+	
 	<script type="text/javascript">
 		function popup() {
 			var _width = '1000';

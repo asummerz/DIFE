@@ -9,6 +9,7 @@
     }
     #header{
         height: 140px;
+        z-index: 9999;
     }
     #contents{
         height: auto;
@@ -19,6 +20,7 @@
     /*header*/
     #header-top{
         height: 90px;
+        z-index: 9999;
     }
     #header-nav{
         height: 50px;
@@ -34,11 +36,11 @@
 }
 
 
-@media (min-width:376px){
+@media (min-width:1200px){
     #wrap{
     clear: both;
     width: 100%;
-    color: #FFFFFF;
+    
     height: 100%;
     text-align: center;
     animation-duration: 2s;
@@ -53,7 +55,7 @@
     }
     
     #footer{
-        height: 140px;
+        height: auto;
         border-top: 1px solid #e1e1e1;
     }
     /*header*/
@@ -73,15 +75,20 @@
     
     /*footer*/
     #footer-nav{
-        height: 10px;
+        height: auto;
         background-color: white;
     }
     #footer-info{
         height: 130px;
         line-height: 20px;
-        font-size: 14px;
+        font-size: 14px !important;
         font-weight:700;
         color: #323232;
         background-color: white;
     }
+}
+
+/* 클릭 시 파란테두리 삭제 */
+input, button:focus {
+   outline: none;
 }
